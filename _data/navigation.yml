@@ -1,4 +1,6 @@
 - name: 主页
-  link: /index.html
-- name: 博客专栏
-  link: /blogs.html
+  link: /
+- name: 归档
+  link: /archive/
+- name: 分类
+  link: /categories/

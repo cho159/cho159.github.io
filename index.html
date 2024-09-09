@@ -2,11 +2,30 @@
 layout: default
 title: CH053N的博客主页
 ---
-    <header>
-        <h1>Welcome to My Blog</h1>
-    </header>
-    <footer>
-        <p>&copy; 2024 QZH. All rights reserved.</p>
-    </footer>
+<div id="home" class="page-content wc-container">
+	<div>
+  		{% for post in site.posts limit:5 %}
+  			<div>
+    			<h3>
+			      <a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}">
+			        {{ post.title }}
+			      </a>
+    			</h3>
+                <p>
+                    {% if post.categories.size > 0 %}  
+                    <span>
+                        {{ post.categories | array_to_sentence_string }}
+                    </span> |
+                    {% endif %}
+                    <span>
+                        {{ post.date | date: "%b %-d, %Y" }}
+                    </span>    
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+    <div>
+		<div><a href="{{ '/archive' | prepend: site.baseurl | prepend: site.url }}">全部文章列表</a></div>
+	</div>
 
 

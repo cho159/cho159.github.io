@@ -1,8 +1,12 @@
-<!-- 这个文件里是用来生成导航栏的 -->
+<!-- 生成导航栏 -->
 <div class="header">
+    <ul>
     {% for item in site.data.navigation %}
-        <a href="{{ item.link }}" class="headerItem">
-            {{ item.name }}
-        </a>
+        <li>
+            <a href="{{ item.link | prepend: site.baseurl | prepend: site.url }}" class="headerItem">
+                {{ item.name }}
+            </a>
+        </li>
     {% endfor %}
+    </ul>
 </div>

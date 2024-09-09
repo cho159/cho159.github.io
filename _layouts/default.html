@@ -5,7 +5,18 @@
 	    <title>{{ page.title }}</title>
   	</head>
   	<body>
+		<header>
+			<div>
+				<h1><a href="{{ site.baseurl }}/">{{ site.author.name }}的个人博客</a></h1>
+                		<h3>{{ site.author.description }}</h3>
+			</div>
+		</header>
 	{% include navigation.html %}
-    	{{ content }}
+    {{ content }}
+	<footer class="main-footer">
+		<p class="wc-container disclaimer">
+			{% include footer.html %}
+		</p>
+	</footer>
   	</body>
 </html>

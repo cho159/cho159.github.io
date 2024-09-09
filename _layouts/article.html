@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+<div class="page-content wc-container">
+
+	<div class="post">
+		<h1>{{ page.title }}</h1>
+		<p class="post-meta">
+			{% if page.categories.size > 0 %}
+      <span class="categories">
+      {{ page.categories | array_to_sentence_string }}
+      </span> |
+	    {% endif %}
+	  <span class="post-date">
+    	{{ page.date | date: "%b %-d, %Y" }}
+	  </span> |
+	  {% if page.tags.size > 0 %}
+	  <span class="categories">
+		  {% for page_tag in page.tags %}
+			  <a href="{{ site.baseurl }}/tags/#{{ page_tag }}">{{ page_tag }}</a>
+		  {% endfor %}
+	  </span>
+	  {% endif %}
+		</p>
+		<div class="post">
+			{{ content }}
+		</div>
+	</div>

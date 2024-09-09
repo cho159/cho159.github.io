@@ -5,27 +5,75 @@
 	    <title>CH053N的博客主页</title>
   	</head>
   	<body>
-	<!-- 这个文件里是用来生成导航栏的 -->
+		<header>
+			<div>
+				<h1><a href="/">CH053N的个人博客</a></h1>
+                		<h3>i'm Waiting 4 U ~</h3>
+			</div>
+		</header>
+	<!-- 生成导航栏 -->
 <div class="header">
+    <ul>
     
-        <a href="/index.html" class="headerItem">
-            主页
-        </a>
+        <li>
+            <a href="http://localhost:4000/" class="headerItem">
+                主页
+            </a>
+        </li>
     
-        <a href="/blogs.html" class="headerItem">
-            博客专栏
-        </a>
+        <li>
+            <a href="http://localhost:4000/archive/" class="headerItem">
+                归档
+            </a>
+        </li>
     
+        <li>
+            <a href="http://localhost:4000/categories/" class="headerItem">
+                分类
+            </a>
+        </li>
+    
+    </ul>
 </div>
 
-    	    <header>
-        <h1>Welcome to My Blog</h1>
-    </header>
-    <footer>
-        <p>&copy; 2024 QZH. All rights reserved.</p>
-    </footer>
+    <div id="home" class="page-content wc-container">
+	<div>
+  		
+  			<div>
+    			<h3>
+			      <a href="http://localhost:4000/2024/09/08/testblogs">
+			        testblogs
+			      </a>
+    			</h3>
+                <p>
+                      
+                    <span>
+                        我的日志
+                    </span> |
+                    
+                    <span>
+                        Sep 8, 2024
+                    </span>    
+                </p>
+            </div>
+        
+    </div>
+    <div>
+		<div><a href="http://localhost:4000/archive">全部文章列表</a></div>
+	</div>
 
 
 
+	<footer class="main-footer">
+		<p class="wc-container disclaimer">
+			<!--生成页尾-->
+Copyright &copy; 2024-<span id="cur_year"></span> <a href="https://github.com/cho159" target="blank">CH053N</a> - All Rights Reserved.
+Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="https://github.com/kuanghy/kuanghy.github.io" target="_blank">Github.com</a>
+<script type="text/javascript">
+    var cur_date = new Date();
+    document.getElementById("cur_year").innerHTML = cur_date.getFullYear();
+</script>
+		</p>
+	</footer>
   	</body>
 </html>
