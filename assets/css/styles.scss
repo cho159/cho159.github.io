@@ -1,9 +1,8 @@
 ---
 ---
-@import "layout";
 .wc-container {
     width: 90%;
-    max-width:$M; // in _layout.scss
+    max-width:768px; 
     margin: 0 auto;
 
     &::after { /* Clearfix */
