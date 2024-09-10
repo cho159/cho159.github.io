@@ -8,7 +8,7 @@ author:
 permalink: /:year/:month/:day/:title
 #默认URL
 url: http://cho159.github.io
-baseurl: /docs
+baseurl: 
 # Sass conversion configs
 sass:
     sass_dir: assets/css/_sass
