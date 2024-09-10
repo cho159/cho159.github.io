@@ -6,6 +6,9 @@
             <a href="{{ item.link | prepend: site.baseurl | prepend: site.url }}" class="headerItem">
                 {{ item.name }}
             </a>
+            {% unless forloop.last %}
+            <span>&raquo;</span>
+            {% endunless %}
         </li>
     {% endfor %}
     </ul>

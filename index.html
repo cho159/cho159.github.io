@@ -3,29 +3,29 @@ layout: default
 title: CH053N的博客主页
 ---
 <div id="home" class="page-content wc-container">
-	<div>
+	<div class="posts">
   		{% for post in site.posts limit:5 %}
-  			<div>
-    			<h3>
+  			<div class="post">
+    			<h3 class="post-title">
 			      <a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}">
 			        {{ post.title }}
 			      </a>
     			</h3>
-                <p>
+                <p class="post-meta">
                     {% if post.categories.size > 0 %}  
-                    <span>
+                    <span class="categories">
                         {{ post.categories | array_to_sentence_string }}
                     </span> |
                     {% endif %}
-                    <span>
+                    <span class="post-date">
                         {{ post.date | date: "%b %-d, %Y" }}
                     </span>    
                 </p>
             </div>
         {% endfor %}
     </div>
-    <div>
-		<div><a href="{{ '/archive' | prepend: site.baseurl | prepend: site.url }}">全部文章列表</a></div>
+    <div class="post-footer">
+		<div class="column-full"><a href="{{ '/archive' | prepend: site.baseurl | prepend: site.url }}">全部文章列表</a></div>
 	</div>
 
 

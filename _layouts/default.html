@@ -3,15 +3,17 @@
 	<head>
 	    <meta charset="utf-8">
 	    <title>{{ page.title }}</title>
+		<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/styles.css">
+		<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/reset.css">
   	</head>
   	<body>
 		<header>
-			<div>
+			<div class="wc-container">
 				<h1><a href="{{ site.baseurl }}/">{{ site.author.name }}的个人博客</a></h1>
                 		<h3>{{ site.author.description }}</h3>
+						{% include navigation.html %}
 			</div>
 		</header>
-	{% include navigation.html %}
     {{ content }}
 	<footer class="main-footer">
 		<p class="wc-container disclaimer">
