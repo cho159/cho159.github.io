@@ -9,7 +9,10 @@ permalink: /:year/:month/:day/:title
 #默认URL
 url: http://cho159.github.io
 baseurl: 
-# Sass conversion configs
+#Sass conversion configs
 sass:
     sass_dir: assets/css/_sass
     style: :compressed
+#markdown解析
+markdown: kramdown
+highlighter: rouge
