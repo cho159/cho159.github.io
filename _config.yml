@@ -3,7 +3,7 @@ destination: docs
 #作者信息
 author:
   name: CH053N
-  description: i'm Waiting 4 U ~
+  description: C'est la vie
 #默认URL路径
 permalink: /:year/:month/:day/:title
 #默认URL

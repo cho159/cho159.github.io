@@ -2,9 +2,11 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-
-
-
+a{
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    color: #da4939;
+}
 ol,ul {
     padding: 0;
     margin: 0;
@@ -12,4 +14,4 @@ ol,ul {
 li {
     display: inline-block; /* 使列表项水平排列 */
     margin-right: 10px; /* 添加水平间距 */
-  }
+}
