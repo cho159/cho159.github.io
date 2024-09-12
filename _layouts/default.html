@@ -6,20 +6,12 @@
 		<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/styles.css">
 		<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/reset.css">
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
-		<style>
-			h1 {
-				font-family: 'Abril Fatface', serif;
-			}
-			p {
-			  font-family: 'Roboto', sans-serif; /* 使用普通字体 Roboto */
-			}
-		  </style>
   	</head>
   	<body>
 		<header class="main-header">
 			<div class="wc-container">
-				<h1><a href="{{ site.baseurl }}/" class="title-link">{{ site.author.name }}的个人博客</a></h1>
-                		<h3>{{ site.author.description }}</h3>
+				<h1 class="site-title"><a href="{{ site.baseurl }}/" class="title-link">{{ site.author.name }}的个人博客</a></h1>
+                		<h3 class="site-description"><i>{{ site.author.description }}</i></h3>
 						{% include navigation.html %}
 			</div>
 		</header>

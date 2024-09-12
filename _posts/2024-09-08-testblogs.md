@@ -1,6 +1,6 @@
 ---
 layout: article
-title: testblogs
+title: 测试博客
 category: 我的日志
 ---
 这是一个测试博客！！！

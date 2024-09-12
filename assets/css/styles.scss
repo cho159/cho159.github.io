@@ -1,6 +1,7 @@
 ---
 ---
 @import "_sass/syntax";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Bebas+Neue&display=swap');
 .wc-container {
   width: 90%;
   max-width:768px; 
@@ -91,4 +92,14 @@ p.post-meta {
   @media (min-width: 768px) {
     font-size: 16px;
   }
+}
+.site-title{
+	font-family: 'Abril Fatface', serif;
+}
+.site-title a{
+  color: #2C3E50;
+}
+.site-description{
+	font-family: 'Merriweather', serif;
+  color: #A9A9A9
 }
