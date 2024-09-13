@@ -77,8 +77,13 @@ margin: 0;
   margin-top: 20px;
   font-weight: 600;
 }
+.post{
+  line-height: 1.5;
+  letter-spacing: 1px;
+}
 .page-content {
   padding: 1em 0;
+  color:#2F4F4F;
 }
 p.post-meta {
   line-height: 1.6;
@@ -102,4 +107,7 @@ p.post-meta {
 .site-description{
 	font-family: 'Merriweather', serif;
   color: #A9A9A9
+}
+.post p{
+  padding:0px 0px;
 }

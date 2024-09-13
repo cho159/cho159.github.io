@@ -2,7 +2,7 @@
 <div class="header">
     <ul>
     {% for item in site.data.navigation %}
-        <li>
+        <li class="navigation-list">
             <a href="{{ item.link | prepend: site.baseurl | prepend: site.url }}" class="headerItem">
                 {{ item.name }}
             </a>

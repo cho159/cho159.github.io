@@ -8,7 +8,7 @@ permalink: /categories/
     <h1>博客分类</h1><hr>
     <ul id="label_box">
         {% for category in site.categories %}
-            <li><a href="{{ site.baseurl }}/categories/#{{ category | first }}">{{ category | first }}
+            <li class="navigation-list"><a href="{{ site.baseurl }}/categories/#{{ category | first }}">{{ category | first }}
             <span>({{ category | last | size}})</span></a>
             </li>
         {% endfor %}

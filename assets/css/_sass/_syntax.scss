@@ -1,8 +1,20 @@
 /* 代码块的样式 */
 pre code {
+    white-space: pre;
     display: block;
-    padding: 10px;
-    margin: 10px 0;
+    padding: 2px 5px;
+    margin: 0px 0px;
+    background-color: #f5f5f5; /* 背景色 */
+    border: 1px solid #ddd; /* 边框 */
+    border-radius: 4px; /* 边角圆润 */
+    overflow-x: auto; /* 横向滚动 */
+    font-size: 0.9em; /* 字号 */
+    color: #333; /* 文字颜色 */
+  }
+  code {
+    white-space: nowrap;
+    margin:0px 2px;
+    padding: 5px 10px;
     background-color: #f5f5f5; /* 背景色 */
     border: 1px solid #ddd; /* 边框 */
     border-radius: 4px; /* 边角圆润 */
