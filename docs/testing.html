@@ -251,13 +251,10 @@ Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="h
 <h2 id="三git分支">三、git分支</h2>
 <p>Git 分支是版本控制中一个强大的特性，它允许开发者在不同的开发线上进行独立的工作。</p>
 
-<p><strong>分支</strong>:分支是一个指向某个提交的指针。分支使你可以在不影响主分支的情况下开发新功能或修复 bug。</p>
-
-<p><strong>主分支（Main）</strong>:这是默认创建的分支，通常用于存储稳定的代码版本。许多项目中，主分支用于发布生产环境代码。</p>
-
-<p><strong>特性分支</strong>:用于开发新特性或功能。开发者可以在这个分支上进行实验和修改，而不会影响主分支。</p>
-
-<p><strong>开发分支（Dev）</strong>:在一些工作流中，开发分支用于整合所有的特性分支，准备下一个版本的发布。</p>
+<p><strong>分支</strong>:分支是一个指向某个提交的指针。分支使你可以在不影响主分支的情况下开发新功能或修复 bug。<br />
+<strong>主分支（Main）</strong>:这是默认创建的分支，通常用于存储稳定的代码版本。许多项目中，主分支用于发布生产环境代码。<br />
+<strong>特性分支</strong>:用于开发新特性或功能。开发者可以在这个分支上进行实验和修改，而不会影响主分支。<br />
+<strong>开发分支（Dev）</strong>:在一些工作流中，开发分支用于整合所有的特性分支，准备下一个版本的发布。</p>
 
 <p>分支操作:</p>
 
@@ -498,13 +495,10 @@ Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="h
 <p><strong>同源的定义</strong>：两个协议、域名、端口相同的URL同源。
 同源策略限制了前端代码对跨域资源的访问，从而防止恶意网站利用前端代码获取用户的敏感信息或进行其他恶意行为（XSS攻击）。</p>
 
-<p>同源策略主要限制以下几个方面：</p>
-
-<p>  JavaScript访问： 不同源的页面限制JavaScript跨域请求获取资源（如<code class="language-plaintext highlighter-rouge">XMLHttpRequest</code>和<code class="language-plaintext highlighter-rouge">fetch</code> API）</p>
-
-<p>  Cookie 读取： JavaScript 不能读取其他源的 Cookie。</p>
-
-<p>  DOM 访问： 非同源页面不能操作访问对方的 DOM。</p>
+<p>同源策略主要限制以下几个方面：<br />
+JavaScript访问： 不同源的页面限制JavaScript跨域请求获取资源（如<code class="language-plaintext highlighter-rouge">XMLHttpRequest</code>和<code class="language-plaintext highlighter-rouge">fetch</code> API）<br />
+Cookie 读取： JavaScript 不能读取其他源的 Cookie。<br />
+DOM 访问： 非同源页面不能操作访问对方的 DOM。</p>
 
 <h2 id="cors跨域访问策略">CORS跨域访问策略</h2>
 <p>CORS（跨域资源共享）是一种机制，它允许服务器明确指定哪些源可以访问其资源，从而在浏览器的同源策略下实现跨域请求。</p>
@@ -534,6 +528,156 @@ User-Agent: Mozilla/5.0...
 <p><strong>Access-Control-Request-Method</strong>字段用来列出该跨域请求会用到的HTTP方法，<strong>Access-Control-Request-Headers</strong>字段指定该跨域请求会额外发送的头信息字段。</p>
 
 <p>服务器收到预检请求后，可做出回应，若同意跨源请求，需添加Access-Control-Allow-Origin，如果浏览器否定了”预检”请求，会返回一个正常的HTTP回应，但是没有任何CORS相关的头信息字段。服务器通过了预检请求之后，以后每次浏览器正常的CORS请求，都跟简单请求一样，会有一个Origin头信息字段。服务器的回应，也都会有一个Access-Control-Allow-Origin头信息字段。</p>
+
+		</div>
+		<div id="valine-comments">
+
+
+		</div>
+		<script>
+			new Valine({
+			  el: '#valine-comments',
+			  appId: 'IRj09zYXUGh9ZfvZKMJEZPh1-gzGzoHsz',
+			  appKey: 'DDvBjJK453ByPX9gfe04YSQj',
+			  placeholder: '说点什么吧！',
+			  path: window.location.pathname, // 当前页面路径，用于区分不同文章
+			  avatar: 'wavatar',
+			  pageSize: 10,
+			  enableQQ: false
+			});
+		  </script>
+	</div>
+</div>
+
+</div>
+	<footer class="main-footer">
+		<p class="wc-container disclaimer">
+			<!--生成页尾-->
+&copy; 2024-<span id="cur_year"></span> <a href="https://github.com/cho159" target="blank">CH053N</a> - All Rights Reserved.
+Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="https://github.com/kuanghy/kuanghy.github.io" target="_blank">Github.com</a>
+<script type="text/javascript">
+    var cur_date = new Date();
+    document.getElementById("cur_year").innerHTML = cur_date.getFullYear();
+</script>
+		</p>
+
+	</footer>
+  	</body>
+</html>)</span>
+        
+            categories[0]<span>(系统与网络)</span>
+            categories[1]<span>(<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <title>计网自顶向下--第一章复习</title>
+		<link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
+		<link rel="stylesheet" type="text/css" href="/assets/css/reset.css">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+  	</head>
+  	<body>
+		<header class="main-header">
+			<div class="wc-container">
+				<h1 class="site-title"><a href="/" class="title-link">CH053N的个人博客</a></h1>
+                		<h3 class="site-description"><i>C'est la vie.</i></h3>
+						<!-- 生成导航栏 -->
+<div class="header">
+    <ul>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/" class="headerItem">
+                主页
+            </a>
+            
+                <span>&raquo;</span>
+            
+        </li>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/archive/" class="headerItem">
+                归档
+            </a>
+            
+                <span>&raquo;</span>
+            
+        </li>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/categories/" class="headerItem">
+                分类
+            </a>
+            
+        </li>
+    
+    </ul>
+</div>
+
+			</div>
+		</header>
+<div class="main-content">
+    <div class="page-content wc-container">
+
+	<div class="post">
+		<h1>计网自顶向下--第一章复习</h1>
+		<p class="post-meta">
+			
+      <span class="categories">
+      系统与网络
+      </span> |
+	    
+	  <span class="post-date">
+    	Sep 29, 2024
+	</span> 
+	  <!-- |
+	   -->
+		</p>
+		<div class="post">
+			<h2 id="一因特网">一、因特网</h2>
+<p>关键词：主机/端系统、通信链路的传输速率（带宽）、分组交换机（链路交换机、路由器）、协议</p>
+
+<p>因特网提供的服务：<br />
+<img src="/assets/png/2024-09-1.png" alt="图片" /></p>
+
+<h2 id="二网络边缘和网络核心">二、网络边缘和网络核心</h2>
+<p><strong>网络边缘</strong>：</p>
+
+<p>通信模型：C/S模型、P2P模型、混合模型</p>
+
+<p>接入网和边缘路由器的概念</p>
+
+<p>物理媒介：导引型和非导引型</p>
+
+<p><strong>网络核心</strong>：</p>
+
+<p>数据传输方式：电路交换和分组交换（重点）</p>
+
+<p>电路交换:预留资源、始终占用、无延迟、独占带宽
+技术：频分复用、时分复用</p>
+
+<p>分组交换：
+<img src="/assets/png/2024-09-2.png" alt="图片" /><br />
+模式：存储转发传输</p>
+
+<p>对比电路交换和分组交换的优缺点，熟悉分组交换网络的特征</p>
+
+<p>因特网结构：网络的网络</p>
+
+<h2 id="三分组交换网">三、分组交换网</h2>
+<p>关键词：时延、丢包、吞吐量</p>
+
+<p>时延=节点处理时延+排队时延+传播时延+传输时延<br />
+流量强度=分组长度×平均分组到达速率÷链路带宽，与平均排队时延正相关<br />
+丢包的原因：队列缓存容量有限<br />
+吞吐量：实际数据传输速率（受瓶颈链路限制）</p>
+
+<h2 id="四协议层次及其服务模型">四、协议层次及其服务模型</h2>
+<p>因特网协议栈：<br />
+<img src="/assets/png/2024-09-3.png" alt="图片" />
+协议三要素：语法、语义、同步</p>
+
+<p>通过协议栈服务模型实现层对层的封装</p>
+
 
 		</div>
 		<div id="valine-comments">

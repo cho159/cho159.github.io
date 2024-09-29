@@ -69,13 +69,10 @@
 <p><strong>同源的定义</strong>：两个协议、域名、端口相同的URL同源。
 同源策略限制了前端代码对跨域资源的访问，从而防止恶意网站利用前端代码获取用户的敏感信息或进行其他恶意行为（XSS攻击）。</p>
 
-<p>同源策略主要限制以下几个方面：</p>
-
-<p>  JavaScript访问： 不同源的页面限制JavaScript跨域请求获取资源（如<code class="language-plaintext highlighter-rouge">XMLHttpRequest</code>和<code class="language-plaintext highlighter-rouge">fetch</code> API）</p>
-
-<p>  Cookie 读取： JavaScript 不能读取其他源的 Cookie。</p>
-
-<p>  DOM 访问： 非同源页面不能操作访问对方的 DOM。</p>
+<p>同源策略主要限制以下几个方面：<br />
+JavaScript访问： 不同源的页面限制JavaScript跨域请求获取资源（如<code class="language-plaintext highlighter-rouge">XMLHttpRequest</code>和<code class="language-plaintext highlighter-rouge">fetch</code> API）<br />
+Cookie 读取： JavaScript 不能读取其他源的 Cookie。<br />
+DOM 访问： 非同源页面不能操作访问对方的 DOM。</p>
 
 <h2 id="cors跨域访问策略">CORS跨域访问策略</h2>
 <p>CORS（跨域资源共享）是一种机制，它允许服务器明确指定哪些源可以访问其资源，从而在浏览器的同源策略下实现跨域请求。</p>
