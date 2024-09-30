@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <title>Cryptopals Set 1思路</title>
+		<link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
+		<link rel="stylesheet" type="text/css" href="/assets/css/reset.css">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+  	</head>
+  	<body>
+		<header class="main-header">
+			<div class="wc-container">
+				<h1 class="site-title"><a href="/" class="title-link">CH053N的个人博客</a></h1>
+                		<h3 class="site-description"><i>C'est la vie.</i></h3>
+						<!-- 生成导航栏 -->
+<div class="header">
+    <ul>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/" class="headerItem">
+                主页
+            </a>
+            
+                <span>&raquo;</span>
+            
+        </li>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/archive/" class="headerItem">
+                归档
+            </a>
+            
+                <span>&raquo;</span>
+            
+        </li>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/categories/" class="headerItem">
+                分类
+            </a>
+            
+        </li>
+    
+    </ul>
+</div>
+
+			</div>
+		</header>
+<div class="main-content">
+    <div class="page-content wc-container">
+
+	<div class="post">
+		<h1>Cryptopals Set 1思路</h1>
+		<p class="post-meta">
+			
+      <span class="categories">
+      网安杂记
+      </span> |
+	    
+	  <span class="post-date">
+    	Oct 1, 2024
+	</span> 
+	  <!-- |
+	   -->
+		</p>
+		<div class="post">
+			<h2 id="1convert-hex-to-base64">1、Convert hex to base64</h2>
+<p><img src="/assets/png/2024-10-1.png" alt="图片" /><br />
+如果直接将原始数据进行base64转换，得到的并不是答案，原因是原始数据为hex编码，一般的base64转换函数是由字符串编码转换为base64编码，因此要预处理原始数据。写一段python以实现该功能：</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">hex_to_string</span><span class="p">(</span><span class="n">hex_string</span><span class="p">):</span>
+    <span class="n">byte_data</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">.</span><span class="nf">fromhex</span><span class="p">(</span><span class="n">hex_string</span><span class="p">)</span>
+    <span class="n">string_data</span> <span class="o">=</span> <span class="n">byte_data</span><span class="p">.</span><span class="nf">decode</span><span class="p">(</span><span class="sh">'</span><span class="s">utf-8</span><span class="sh">'</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">string_data</span>
+
+<span class="n">input_string</span> <span class="o">=</span> <span class="nf">input</span><span class="p">(</span><span class="sh">"</span><span class="s">原始hex数据：</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="nf">hex_to_string</span><span class="p">(</span><span class="n">input_string</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div></div>
+<p>运行结果：<br />
+<img src="/assets/png/2024-10-2.png" alt="图片" /> <br />
+再将得到的字符串base64编码，得到答案：
+<img src="/assets/png/2024-10-3.png" alt="图片" /></p>
+
+		</div>
+		<div id="valine-comments">
+
+
+		</div>
+		<script>
+			new Valine({
+			  el: '#valine-comments',
+			  appId: 'IRj09zYXUGh9ZfvZKMJEZPh1-gzGzoHsz',
+			  appKey: 'DDvBjJK453ByPX9gfe04YSQj',
+			  placeholder: '说点什么吧！',
+			  path: window.location.pathname, // 当前页面路径，用于区分不同文章
+			  avatar: 'wavatar',
+			  pageSize: 10,
+			  enableQQ: false
+			});
+		  </script>
+	</div>
+</div>
+
+</div>
+	<footer class="main-footer">
+		<p class="wc-container disclaimer">
+			<!--生成页尾-->
+&copy; 2024-<span id="cur_year"></span> <a href="https://github.com/cho159" target="blank">CH053N</a> - All Rights Reserved.
+Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="https://github.com/kuanghy/kuanghy.github.io" target="_blank">Github.com</a>
+<script type="text/javascript">
+    var cur_date = new Date();
+    document.getElementById("cur_year").innerHTML = cur_date.getFullYear();
+</script>
+		</p>
+
+	</footer>
+  	</body>
+</html>

@@ -121,3 +121,13 @@ img {
   padding: 20px; /* 内边距 */
   border-radius: 8px; /* 圆角 */
 }
+//图片放大
+img {
+  transition: transform .2s; /* 动画效果 */
+  cursor: pointer; /* 鼠标样式 */
+}
+
+img:hover {
+  transition-delay: 0.5s;
+  transform: scale(1.5); /* 放大效果 */
+}
