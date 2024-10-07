@@ -491,11 +491,19 @@ Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="h
 	   -->
 		</p>
 		<div class="post">
-			<h2 id="1convert-hex-to-base64">1、Convert hex to base64</h2>
+			<h2 id="类型转换函数归纳">类型转换函数归纳：</h2>
+<p>bytes.fromhex(hex_string) 输入十六进制字符串，返回一个表示转换后的字节对象
+字节变量.decode(“utf-8”) 将字节变量以utf-8方式（或其他编码）解码为字符串
+整型变量.to_bytes(length, byteorder) 将整型变量转为字节序列
+int(hex_string, 16) 将十六进制字符串转十进制整数
+hex(number) 将十进制整数转十六进制字符串</p>
+
+<h2 id="1convert-hex-to-base64">1、Convert hex to base64</h2>
 <p><img src="/assets/png/2024-10-1.png" alt="图片" /><br />
 如果直接将原始数据进行base64转换，得到的并不是答案，原因是原始数据为hex编码，一般的base64转换函数是由字符串编码转换为base64编码，因此要预处理原始数据。写一段python以实现该功能：</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">hex_to_string</span><span class="p">(</span><span class="n">hex_string</span><span class="p">):</span>
-    <span class="n">byte_data</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">.</span><span class="nf">fromhex</span><span class="p">(</span><span class="n">hex_string</span><span class="p">)</span>
+    <span class="c1">#bytes.fromhex()将十六进制字符串对象转为字节对象，忽略ASCII空白符
+</span>    <span class="n">byte_data</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">.</span><span class="nf">fromhex</span><span class="p">(</span><span class="n">hex_string</span><span class="p">)</span>
     <span class="n">string_data</span> <span class="o">=</span> <span class="n">byte_data</span><span class="p">.</span><span class="nf">decode</span><span class="p">(</span><span class="sh">'</span><span class="s">utf-8</span><span class="sh">'</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">string_data</span>
 
@@ -506,7 +514,23 @@ Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="h
 <p>运行结果：<br />
 <img src="/assets/png/2024-10-2.png" alt="图片" /> <br />
 再将得到的字符串base64编码，得到答案：
-<img src="/assets/png/2024-10-3.png" alt="图片" /></p>
+<img src="/assets/png/2024-10-3.png" alt="图片" /><br />
+ 或者使用base64库中的b64encode()函数，输入一个字节对象后可返回其base64编码后的字节对象。</p>
+
+<h2 id="2fixed-xor">2、Fixed XOR</h2>
+<p><img src="/assets/png/2024-10-4.png" alt="图片" /><br />
+用python实现对两个hex型字符串异或运算：</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">string_1</span> <span class="o">=</span><span class="nf">input</span><span class="p">()</span>
+<span class="n">string_2</span> <span class="o">=</span><span class="nf">input</span><span class="p">()</span>
+<span class="n">bytes_1</span><span class="o">=</span><span class="nb">bytes</span><span class="p">.</span><span class="nf">fromhex</span><span class="p">(</span><span class="n">string_1</span><span class="p">)</span>
+<span class="n">bytes_2</span><span class="o">=</span><span class="nb">bytes</span><span class="p">.</span><span class="nf">fromhex</span><span class="p">(</span><span class="n">string_2</span><span class="p">)</span>
+<span class="c1">#生成器表达式基本语法：(expression for item in iterable),返回结果为一个迭代器
+</span><span class="n">result</span><span class="o">=</span><span class="nf">bytes</span><span class="p">(</span><span class="n">a</span> <span class="o">^</span> <span class="n">b</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="ow">in</span> <span class="nf">zip</span><span class="p">(</span><span class="n">bytes_1</span><span class="p">,</span><span class="n">bytes_2</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="nf">hex</span><span class="p">())</span>
+</code></pre></div></div>
+<h2 id="3single-byte-xor-cipher">3、Single-byte XOR cipher</h2>
+<p><img src="/assets/png/2024-10-5.png" alt="图片" />
+单字节密钥长度为1 byte（8位），范围是0~255，可通过暴力枚举破解，通过统计字母频度来确认该情况的合理性</p>
 
 		</div>
 		<div id="valine-comments">
