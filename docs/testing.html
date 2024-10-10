@@ -492,10 +492,10 @@ Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="h
 		</p>
 		<div class="post">
 			<h2 id="类型转换函数归纳">类型转换函数归纳：</h2>
-<p>bytes.fromhex(hex_string) 输入十六进制字符串，返回一个表示转换后的字节对象
-字节变量.decode(“utf-8”) 将字节变量以utf-8方式（或其他编码）解码为字符串
-整型变量.to_bytes(length, byteorder) 将整型变量转为字节序列
-int(hex_string, 16) 将十六进制字符串转十进制整数
+<p>bytes.fromhex(hex_string) 输入十六进制字符串，返回一个表示转换后的字节对象<br />
+字节变量.decode(“utf-8”) 将字节变量以utf-8方式（或其他编码）解码为字符串<br />
+整型变量.to_bytes(length, byteorder) 将整型变量转为字节序列<br />
+int(hex_string, 16) 将十六进制字符串转十进制整数<br />
 hex(number) 将十进制整数转十六进制字符串</p>
 
 <h2 id="1convert-hex-to-base64">1、Convert hex to base64</h2>
@@ -531,6 +531,39 @@ hex(number) 将十进制整数转十六进制字符串</p>
 <h2 id="3single-byte-xor-cipher">3、Single-byte XOR cipher</h2>
 <p><img src="/assets/png/2024-10-5.png" alt="图片" />
 单字节密钥长度为1 byte（8位），范围是0~255，可通过暴力枚举破解，通过统计字母频度来确认该情况的合理性</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hex_string</span><span class="o">=</span><span class="sh">"</span><span class="s">1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736</span><span class="sh">"</span>
+<span class="n">bytes_string</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">.</span><span class="nf">fromhex</span><span class="p">(</span><span class="n">hex_string</span><span class="p">)</span>
+<span class="c1">#计分函数：根据字符频度计算得分
+</span><span class="k">def</span> <span class="nf">test_score</span><span class="p">(</span><span class="n">sentence</span><span class="p">):</span>
+    <span class="n">score</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">freq</span><span class="o">=</span><span class="p">{</span><span class="sh">'</span><span class="s">a</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0651738</span><span class="p">,</span> <span class="sh">'</span><span class="s">b</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0124248</span><span class="p">,</span> <span class="sh">'</span><span class="s">c</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0217339</span><span class="p">,</span>
+         <span class="sh">'</span><span class="s">d</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0349835</span><span class="p">,</span> <span class="sh">'</span><span class="s">e</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.1041442</span><span class="p">,</span> <span class="sh">'</span><span class="s">f</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0197881</span><span class="p">,</span>
+         <span class="sh">'</span><span class="s">g</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0158610</span><span class="p">,</span> <span class="sh">'</span><span class="s">h</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0492888</span><span class="p">,</span> <span class="sh">'</span><span class="s">i</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0558094</span><span class="p">,</span>
+         <span class="sh">'</span><span class="s">j</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0009033</span><span class="p">,</span> <span class="sh">'</span><span class="s">k</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0050529</span><span class="p">,</span> <span class="sh">'</span><span class="s">l</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0331490</span><span class="p">,</span>
+         <span class="sh">'</span><span class="s">m</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0202124</span><span class="p">,</span> <span class="sh">'</span><span class="s">n</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0564513</span><span class="p">,</span> <span class="sh">'</span><span class="s">o</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0596302</span><span class="p">,</span>
+         <span class="sh">'</span><span class="s">p</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0137645</span><span class="p">,</span> <span class="sh">'</span><span class="s">q</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0008606</span><span class="p">,</span> <span class="sh">'</span><span class="s">r</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0497563</span><span class="p">,</span>
+         <span class="sh">'</span><span class="s">s</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0515760</span><span class="p">,</span> <span class="sh">'</span><span class="s">t</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0729357</span><span class="p">,</span> <span class="sh">'</span><span class="s">u</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0225134</span><span class="p">,</span>
+         <span class="sh">'</span><span class="s">v</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0082903</span><span class="p">,</span> <span class="sh">'</span><span class="s">w</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0171272</span><span class="p">,</span> <span class="sh">'</span><span class="s">x</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0013692</span><span class="p">,</span>
+         <span class="sh">'</span><span class="s">y</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0145984</span><span class="p">,</span> <span class="sh">'</span><span class="s">z</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0007836</span><span class="p">,</span> <span class="sh">'</span><span class="s"> </span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.1918182</span><span class="p">}</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sentence</span><span class="p">.</span><span class="nf">lower</span><span class="p">():</span><span class="c1">#将字符串中的字母转为大写
+</span>        <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">freq</span><span class="p">:</span>
+            <span class="n">score</span><span class="o">+=</span><span class="n">freq</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">score</span>
+
+<span class="n">max_score</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">128</span><span class="p">):</span>
+    <span class="n">bytes_i</span><span class="o">=</span> <span class="n">i</span><span class="p">.</span><span class="nf">to_bytes</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">decode_bytes</span><span class="o">=</span><span class="nf">bytes</span><span class="p">(</span><span class="n">bytes_i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">^</span> <span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">bytes_string</span><span class="p">)</span>
+    <span class="n">decode_string</span> <span class="o">=</span> <span class="n">decode_bytes</span><span class="p">.</span><span class="nf">decode</span><span class="p">(</span><span class="sh">"</span><span class="s">utf-8</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">score</span><span class="o">=</span><span class="nf">test_score</span><span class="p">(</span><span class="n">decode_string</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">score</span><span class="o">&gt;</span><span class="n">max_score</span><span class="p">:</span>
+        <span class="n">max_score</span><span class="o">=</span><span class="n">score</span>
+        <span class="n">sentence</span><span class="o">=</span><span class="n">decode_string</span>
+        <span class="n">ans_byte</span><span class="o">=</span><span class="n">i</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">Key:</span><span class="si">{</span><span class="n">ans_byte</span><span class="p">.</span><span class="nf">to_bytes</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nf">decode</span><span class="p">(</span><span class="sh">"</span><span class="s">utf-8</span><span class="sh">"</span><span class="p">)</span><span class="si">}</span><span class="sh">"</span><span class="p">,</span><span class="n">sentence</span><span class="p">,</span><span class="n">max_score</span><span class="p">)</span>
+</code></pre></div></div>
+<p>运行结果：<br />
+<img src="/assets/png/2024-10-6.png" alt="图片" /></p>
 
 		</div>
 		<div id="valine-comments">
