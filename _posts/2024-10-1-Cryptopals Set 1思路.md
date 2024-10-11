@@ -79,3 +79,45 @@ print(f"Key:{ans_byte.to_bytes(1).decode("utf-8")}",sentence,max_score)
 ```
 运行结果：  
 ![图片](/assets/png/2024-10-6.png)
+
+## 4、Detect single-character XOR
+![图片](/assets/png/2024-10-7.png)
+思路：用python脚本读取文件，逐行读取字符串，对每个字符串都进行3中的操作计算得分，最后可尝试  
+```python
+def test_score(sentence):
+    score=0
+    freq={'a': 0.0651738, 'b': 0.0124248, 'c': 0.0217339,
+         'd': 0.0349835, 'e': 0.1041442, 'f': 0.0197881,
+         'g': 0.0158610, 'h': 0.0492888, 'i': 0.0558094,
+         'j': 0.0009033, 'k': 0.0050529, 'l': 0.0331490,
+         'm': 0.0202124, 'n': 0.0564513, 'o': 0.0596302,
+         'p': 0.0137645, 'q': 0.0008606, 'r': 0.0497563,
+         's': 0.0515760, 't': 0.0729357, 'u': 0.0225134,
+         'v': 0.0082903, 'w': 0.0171272, 'x': 0.0013692,
+         'y': 0.0145984, 'z': 0.0007836, ' ': 0.1918182}
+    for x in sentence.lower():#将字符串中的字母转为大写
+        if x in freq:
+            score+=freq[x]
+    return score
+
+with open('file.txt', 'r') as file:
+    for line in file:
+        string=line.strip()
+        bytes_string = bytes.fromhex(string)
+        max_score=0
+        for i in range(128):
+            bytes_i= i.to_bytes(1)
+            decode_bytes=bytes(bytes_i[0] ^ j for j in bytes_string)
+            try:
+                # 使用 errors='ignore' 忽略无法解码的字节
+                decode_string = decode_bytes.decode("utf-8", errors='ignore')
+            except Exception as e:
+                continue
+            score=test_score(decode_string)
+            if score>max_score:
+                max_score=score
+                sentence=decode_string
+                ans_byte=i
+        if max_score>2:#筛选较高得分的解码后句子，此处可选1.5~2进行尝试
+            print(f"Key:{ans_byte.to_bytes(1).decode("utf-8")}",sentence,max_score)
+```
