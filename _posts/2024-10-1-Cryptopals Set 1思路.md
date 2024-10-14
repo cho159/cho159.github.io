@@ -121,3 +121,4 @@ with open('file.txt', 'r') as file:
         if max_score>2:#筛选较高得分的解码后句子，此处可选1.5~2进行尝试
             print(f"Key:{ans_byte.to_bytes(1).decode("utf-8")}",sentence,max_score)
 ```
+![图片](/assets/png/2024-10-8.png)
