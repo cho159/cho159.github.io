@@ -4,3 +4,5 @@
   link: /archive/
 - name: 分类
   link: /categories/
+- name: 标签
+  link: /tags/
