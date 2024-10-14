@@ -1,4 +1,4 @@
-﻿---
+---
 layout: default
 title: 博客标签
 permalink: /tags/
@@ -9,7 +9,7 @@ permalink: /tags/
     <ul id="label_box">
         {% for tag in site.tags %}
             <li class="navigation-list"><a href="{{ site.baseurl }}/tags/#{{ tag[0] }}">{{ tag | first }}
-            <span>{{ tag | last | size }}</span></a>
+            <span>({{ tag | last | size }})</span></a>
             </li>
         {% endfor %}
     </ul>

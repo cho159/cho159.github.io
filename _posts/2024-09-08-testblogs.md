@@ -2,6 +2,7 @@
 layout: article
 title: 测试博客
 category: 我的日志
+tag: 日志
 ---
 这是一个测试博客！！！
 # 这是一级标题

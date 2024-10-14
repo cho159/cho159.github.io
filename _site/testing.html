@@ -72,8 +72,14 @@
 	  <span class="post-date">
     	Sep 8, 2024
 	</span> 
-	  <!-- |
-	   -->
+	   |
+	  
+	  <span class="categories">
+		  
+			  <a href="/tags/#日志">日志</a>
+		  
+	  </span>
+	  
 		</p>
 		<div class="post">
 			<p>这是一个测试博客！！！</p>
@@ -217,8 +223,14 @@ Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="h
 	  <span class="post-date">
     	Sep 13, 2024
 	</span> 
-	  <!-- |
-	   -->
+	   |
+	  
+	  <span class="categories">
+		  
+			  <a href="/tags/#git">git</a>
+		  
+	  </span>
+	  
 		</p>
 		<div class="post">
 			<p>Git 是一个分布式版本控制系统，广泛应用于软件开发和版本管理中。在开发团队中，它可以跟踪每个开发者对项目的贡献，记录每一次代码修改，支持回滚到任何历史版本，确保代码版本的稳定性。多人开发时，Git 支持并行开发和代码合并。通过分支功能，不同开发人员可以在自己的分支上工作，最后合并代码。个人开发者也可以使用 Git 来管理个人项目、学习笔记或文档。它提供本地和远程仓库备份，避免数据丢失，还能轻松管理版本。</p>
@@ -399,8 +411,16 @@ Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="h
 	  <span class="post-date">
     	Sep 16, 2024
 	</span> 
-	  <!-- |
-	   -->
+	   |
+	  
+	  <span class="categories">
+		  
+			  <a href="/tags/#日志">日志</a>
+		  
+			  <a href="/tags/#随笔">随笔</a>
+		  
+	  </span>
+	  
 		</p>
 		<div class="post">
 			<p>好多天前，我开始着手搭建一个完完全全属于自己的独立博客。为什么会突然有这个想法，我想可能最开始是为了源自于我对记录学习过程的需求。计算机这门学科内容繁杂，学习过程中会接触到大量的碎片化资料，往往用完即忘。我认为拥有一个属于自己的空间来整理和记录这些知识会有所帮助。大多数人可能会选择在CSDN上建立博客，但我想，我为什么不尝试进一步建立一个由自己掌控的网站呢？或许这会显得简陋，但它一定很有意思。或许，除了学习日志，我也可以在这上面记录一些有趣的生活碎片，捕捉一些有趣的想法瞬间。</p>
@@ -450,7 +470,7 @@ Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="h
   	</body>
 </html>)</span>
         
-            categories[0]<span>(网安杂记)</span>
+            categories[0]<span>(网络安全)</span>
             categories[1]<span>(<!DOCTYPE html>
 <html>
 	<head>
@@ -517,14 +537,20 @@ Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="h
 		<p class="post-meta">
 			
       <span class="categories">
-      网安杂记
+      网络安全
       </span> |
 	    
 	  <span class="post-date">
     	Oct 1, 2024
 	</span> 
-	  <!-- |
-	   -->
+	   |
+	  
+	  <span class="categories">
+		  
+			  <a href="/tags/#crypto">crypto</a>
+		  
+	  </span>
+	  
 		</p>
 		<div class="post">
 			<h2 id="类型转换函数归纳">类型转换函数归纳：</h2>
@@ -681,157 +707,6 @@ Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="h
 <html>
 	<head>
 	    <meta charset="utf-8">
-	    <title>同源策略和CORS策略</title>
-		<link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
-		<link rel="stylesheet" type="text/css" href="/assets/css/reset.css">
-		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
-		<script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
-  	</head>
-  	<body>
-		<header class="main-header">
-			<div class="wc-container">
-				<h1 class="site-title"><a href="/" class="title-link">CH053N的个人博客</a></h1>
-                		<h3 class="site-description"><i>C'est la vie.</i></h3>
-						<!-- 生成导航栏 -->
-<div class="header">
-    <ul>
-    
-        <li class="navigation-list">
-            <a href="http://cho159.github.io/" class="headerItem">
-                主页
-            </a>
-            
-                <span>&raquo;</span>
-            
-        </li>
-    
-        <li class="navigation-list">
-            <a href="http://cho159.github.io/archive/" class="headerItem">
-                归档
-            </a>
-            
-                <span>&raquo;</span>
-            
-        </li>
-    
-        <li class="navigation-list">
-            <a href="http://cho159.github.io/categories/" class="headerItem">
-                分类
-            </a>
-            
-                <span>&raquo;</span>
-            
-        </li>
-    
-        <li class="navigation-list">
-            <a href="http://cho159.github.io/tags/" class="headerItem">
-                标签
-            </a>
-            
-        </li>
-    
-    </ul>
-</div>
-
-			</div>
-		</header>
-<div class="main-content">
-    <div class="page-content wc-container">
-
-	<div class="post">
-		<h1>同源策略和CORS策略</h1>
-		<p class="post-meta">
-			
-      <span class="categories">
-      网安杂记
-      </span> |
-	    
-	  <span class="post-date">
-    	Sep 23, 2024
-	</span> 
-	  <!-- |
-	   -->
-		</p>
-		<div class="post">
-			<h2 id="同源策略">同源策略</h2>
-<p><strong>同源的定义</strong>：两个协议、域名、端口相同的URL同源。
-同源策略限制了前端代码对跨域资源的访问，从而防止恶意网站利用前端代码获取用户的敏感信息或进行其他恶意行为（XSS攻击）。</p>
-
-<p>同源策略主要限制以下几个方面：<br />
-JavaScript访问： 不同源的页面限制JavaScript跨域请求获取资源（如<code class="language-plaintext highlighter-rouge">XMLHttpRequest</code>和<code class="language-plaintext highlighter-rouge">fetch</code> API）<br />
-Cookie 读取： JavaScript 不能读取其他源的 Cookie。<br />
-DOM 访问： 非同源页面不能操作访问对方的 DOM。</p>
-
-<h2 id="cors跨域访问策略">CORS跨域访问策略</h2>
-<p>CORS（跨域资源共享）是一种机制，它允许服务器明确指定哪些源可以访问其资源，从而在浏览器的同源策略下实现跨域请求。</p>
-
-<p><strong>简单请求</strong>：请求方法为GET,POST或HEAD，头字段不超出范围（AcceptAccept-Language，Content-Language，Last-Event-ID，Content-Type：只限于三个值application/x-www-form-urlencoded、multipart/form-data、text/plain）</p>
-
-<p>对于跨域简单请求，浏览器在请求头中添加origin字段后直接发送（用来说明请求来源）。例：</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /cors HTTP/1.1
-Origin: http://api.bob.com
-Host: api.alice.com
-Accept-Language: en-US
-Connection: keep-alive
-User-Agent: Mozilla/5.0...
-</code></pre></div></div>
-<p>服务器同意跨域请求时，在响应头必须包含头部<strong>Access-Control-Allow-Origin</strong>，表明允许哪些源访问资源。</p>
-
-<p>对于跨域非简单请求，浏览器会在发送请求前发一次HTTP查询请求（<strong>预检请求</strong>）,预检请求用的请求方法是OPTIONS，表示这个请求是用来询问的。头信息里面，关键字段是Origin，表示请求来自哪个源,如预检请求：</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>OPTIONS /cors HTTP/1.1
-Origin: http://api.bob.com
-Access-Control-Request-Method: PUT
-Access-Control-Request-Headers: X-Custom-Header
-Host: api.alice.com
-Accept-Language: en-US
-Connection: keep-alive
-User-Agent: Mozilla/5.0...
-</code></pre></div></div>
-<p><strong>Access-Control-Request-Method</strong>字段用来列出该跨域请求会用到的HTTP方法，<strong>Access-Control-Request-Headers</strong>字段指定该跨域请求会额外发送的头信息字段。</p>
-
-<p>服务器收到预检请求后，可做出回应，若同意跨源请求，需添加Access-Control-Allow-Origin，如果浏览器否定了”预检”请求，会返回一个正常的HTTP回应，但是没有任何CORS相关的头信息字段。服务器通过了预检请求之后，以后每次浏览器正常的CORS请求，都跟简单请求一样，会有一个Origin头信息字段。服务器的回应，也都会有一个Access-Control-Allow-Origin头信息字段。</p>
-
-		</div>
-		<div id="valine-comments">
-
-
-		</div>
-		<script>
-			new Valine({
-			  el: '#valine-comments',
-			  appId: 'IRj09zYXUGh9ZfvZKMJEZPh1-gzGzoHsz',
-			  appKey: 'DDvBjJK453ByPX9gfe04YSQj',
-			  placeholder: '说点什么吧！',
-			  path: window.location.pathname, // 当前页面路径，用于区分不同文章
-			  avatar: 'wavatar',
-			  pageSize: 10,
-			  enableQQ: false
-			});
-		  </script>
-	</div>
-</div>
-
-</div>
-	<footer class="main-footer">
-		<p class="wc-container disclaimer">
-			<!--生成页尾-->
-&copy; 2024-<span id="cur_year"></span> <a href="https://github.com/cho159" target="blank">CH053N</a> - All Rights Reserved.
-Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="https://github.com/kuanghy/kuanghy.github.io" target="_blank">Github.com</a>
-<script type="text/javascript">
-    var cur_date = new Date();
-    document.getElementById("cur_year").innerHTML = cur_date.getFullYear();
-</script>
-		</p>
-
-	</footer>
-  	</body>
-</html>)</span>
-        
-            categories[0]<span>(系统与网络)</span>
-            categories[1]<span>(<!DOCTYPE html>
-<html>
-	<head>
-	    <meta charset="utf-8">
 	    <title>计网自顶向下--第一章复习</title>
 		<link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
 		<link rel="stylesheet" type="text/css" href="/assets/css/reset.css">
@@ -894,14 +769,20 @@ Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="h
 		<p class="post-meta">
 			
       <span class="categories">
-      系统与网络
+      网络安全
       </span> |
 	    
 	  <span class="post-date">
     	Sep 29, 2024
 	</span> 
-	  <!-- |
-	   -->
+	   |
+	  
+	  <span class="categories">
+		  
+			  <a href="/tags/#网络">网络</a>
+		  
+	  </span>
+	  
 		</p>
 		<div class="post">
 			<h2 id="一因特网">一、因特网</h2>
@@ -949,6 +830,160 @@ Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="h
 
 <p>通过协议栈服务模型实现层对层的封装</p>
 
+
+		</div>
+		<div id="valine-comments">
+
+
+		</div>
+		<script>
+			new Valine({
+			  el: '#valine-comments',
+			  appId: 'IRj09zYXUGh9ZfvZKMJEZPh1-gzGzoHsz',
+			  appKey: 'DDvBjJK453ByPX9gfe04YSQj',
+			  placeholder: '说点什么吧！',
+			  path: window.location.pathname, // 当前页面路径，用于区分不同文章
+			  avatar: 'wavatar',
+			  pageSize: 10,
+			  enableQQ: false
+			});
+		  </script>
+	</div>
+</div>
+
+</div>
+	<footer class="main-footer">
+		<p class="wc-container disclaimer">
+			<!--生成页尾-->
+&copy; 2024-<span id="cur_year"></span> <a href="https://github.com/cho159" target="blank">CH053N</a> - All Rights Reserved.
+Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="https://github.com/kuanghy/kuanghy.github.io" target="_blank">Github.com</a>
+<script type="text/javascript">
+    var cur_date = new Date();
+    document.getElementById("cur_year").innerHTML = cur_date.getFullYear();
+</script>
+		</p>
+
+	</footer>
+  	</body>
+</html><!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <title>同源策略和CORS策略</title>
+		<link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
+		<link rel="stylesheet" type="text/css" href="/assets/css/reset.css">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+  	</head>
+  	<body>
+		<header class="main-header">
+			<div class="wc-container">
+				<h1 class="site-title"><a href="/" class="title-link">CH053N的个人博客</a></h1>
+                		<h3 class="site-description"><i>C'est la vie.</i></h3>
+						<!-- 生成导航栏 -->
+<div class="header">
+    <ul>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/" class="headerItem">
+                主页
+            </a>
+            
+                <span>&raquo;</span>
+            
+        </li>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/archive/" class="headerItem">
+                归档
+            </a>
+            
+                <span>&raquo;</span>
+            
+        </li>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/categories/" class="headerItem">
+                分类
+            </a>
+            
+                <span>&raquo;</span>
+            
+        </li>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/tags/" class="headerItem">
+                标签
+            </a>
+            
+        </li>
+    
+    </ul>
+</div>
+
+			</div>
+		</header>
+<div class="main-content">
+    <div class="page-content wc-container">
+
+	<div class="post">
+		<h1>同源策略和CORS策略</h1>
+		<p class="post-meta">
+			
+      <span class="categories">
+      网络安全
+      </span> |
+	    
+	  <span class="post-date">
+    	Sep 23, 2024
+	</span> 
+	   |
+	  
+	  <span class="categories">
+		  
+			  <a href="/tags/#web">web</a>
+		  
+	  </span>
+	  
+		</p>
+		<div class="post">
+			<h2 id="同源策略">同源策略</h2>
+<p><strong>同源的定义</strong>：两个协议、域名、端口相同的URL同源。
+同源策略限制了前端代码对跨域资源的访问，从而防止恶意网站利用前端代码获取用户的敏感信息或进行其他恶意行为（XSS攻击）。</p>
+
+<p>同源策略主要限制以下几个方面：<br />
+JavaScript访问： 不同源的页面限制JavaScript跨域请求获取资源（如<code class="language-plaintext highlighter-rouge">XMLHttpRequest</code>和<code class="language-plaintext highlighter-rouge">fetch</code> API）<br />
+Cookie 读取： JavaScript 不能读取其他源的 Cookie。<br />
+DOM 访问： 非同源页面不能操作访问对方的 DOM。</p>
+
+<h2 id="cors跨域访问策略">CORS跨域访问策略</h2>
+<p>CORS（跨域资源共享）是一种机制，它允许服务器明确指定哪些源可以访问其资源，从而在浏览器的同源策略下实现跨域请求。</p>
+
+<p><strong>简单请求</strong>：请求方法为GET,POST或HEAD，头字段不超出范围（AcceptAccept-Language，Content-Language，Last-Event-ID，Content-Type：只限于三个值application/x-www-form-urlencoded、multipart/form-data、text/plain）</p>
+
+<p>对于跨域简单请求，浏览器在请求头中添加origin字段后直接发送（用来说明请求来源）。例：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /cors HTTP/1.1
+Origin: http://api.bob.com
+Host: api.alice.com
+Accept-Language: en-US
+Connection: keep-alive
+User-Agent: Mozilla/5.0...
+</code></pre></div></div>
+<p>服务器同意跨域请求时，在响应头必须包含头部<strong>Access-Control-Allow-Origin</strong>，表明允许哪些源访问资源。</p>
+
+<p>对于跨域非简单请求，浏览器会在发送请求前发一次HTTP查询请求（<strong>预检请求</strong>）,预检请求用的请求方法是OPTIONS，表示这个请求是用来询问的。头信息里面，关键字段是Origin，表示请求来自哪个源,如预检请求：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>OPTIONS /cors HTTP/1.1
+Origin: http://api.bob.com
+Access-Control-Request-Method: PUT
+Access-Control-Request-Headers: X-Custom-Header
+Host: api.alice.com
+Accept-Language: en-US
+Connection: keep-alive
+User-Agent: Mozilla/5.0...
+</code></pre></div></div>
+<p><strong>Access-Control-Request-Method</strong>字段用来列出该跨域请求会用到的HTTP方法，<strong>Access-Control-Request-Headers</strong>字段指定该跨域请求会额外发送的头信息字段。</p>
+
+<p>服务器收到预检请求后，可做出回应，若同意跨源请求，需添加Access-Control-Allow-Origin，如果浏览器否定了”预检”请求，会返回一个正常的HTTP回应，但是没有任何CORS相关的头信息字段。服务器通过了预检请求之后，以后每次浏览器正常的CORS请求，都跟简单请求一样，会有一个Origin头信息字段。服务器的回应，也都会有一个Access-Control-Allow-Origin头信息字段。</p>
 
 		</div>
 		<div id="valine-comments">

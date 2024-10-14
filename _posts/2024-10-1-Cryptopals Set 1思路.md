@@ -1,7 +1,8 @@
 ---
 layout: article
 title: Cryptopals Set 1思路
-category: 网安杂记
+category: 网络安全
+tag: crypto
 ---
 ## 类型转换函数归纳：
 bytes.fromhex(hex_string) 输入十六进制字符串，返回一个表示转换后的字节对象  
