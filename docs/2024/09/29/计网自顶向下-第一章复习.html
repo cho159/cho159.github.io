@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <title>计网自顶向下--第一章复习</title>
+		<link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
+		<link rel="stylesheet" type="text/css" href="/assets/css/reset.css">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+  	</head>
+  	<body>
+		<header class="main-header">
+			<div class="wc-container">
+				<h1 class="site-title"><a href="/" class="title-link">CH053N的个人博客</a></h1>
+                		<h3 class="site-description"><i>C'est la vie.</i></h3>
+						<!-- 生成导航栏 -->
+<div class="header">
+    <ul>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/" class="headerItem">
+                主页
+            </a>
+            
+                <span>&raquo;</span>
+            
+        </li>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/archive/" class="headerItem">
+                归档
+            </a>
+            
+                <span>&raquo;</span>
+            
+        </li>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/categories/" class="headerItem">
+                分类
+            </a>
+            
+                <span>&raquo;</span>
+            
+        </li>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/tags/" class="headerItem">
+                标签
+            </a>
+            
+        </li>
+    
+    </ul>
+</div>
+
+			</div>
+		</header>
+<div class="main-content">
+    <div class="page-content wc-container">
+
+	<div class="post">
+		<h1>计网自顶向下--第一章复习</h1>
+		<p class="post-meta">
+			
+      <span class="categories">
+      网络安全
+      </span> |
+	    
+	  <span class="post-date">
+    	Sep 29, 2024
+	</span> 
+	   |
+	  
+	  <span class="categories">
+		  
+			  <a href="/tags/#网络">网络</a>
+		  
+	  </span>
+	  
+		</p>
+		<div class="post">
+			<h2 id="一因特网">一、因特网</h2>
+<p>关键词：主机/端系统、通信链路的传输速率（带宽）、分组交换机（链路交换机、路由器）、协议</p>
+
+<p>因特网提供的服务：<br />
+<img src="/assets/png/2024-09-1.png" alt="图片" /></p>
+
+<h2 id="二网络边缘和网络核心">二、网络边缘和网络核心</h2>
+<p><strong>网络边缘</strong>：</p>
+
+<p>通信模型：C/S模型、P2P模型、混合模型</p>
+
+<p>接入网和边缘路由器的概念</p>
+
+<p>物理媒介：导引型和非导引型</p>
+
+<p><strong>网络核心</strong>：</p>
+
+<p>数据传输方式：电路交换和分组交换（重点）</p>
+
+<p>电路交换:预留资源、始终占用、无延迟、独占带宽
+技术：频分复用、时分复用</p>
+
+<p>分组交换：
+<img src="/assets/png/2024-09-2.png" alt="图片" /><br />
+模式：存储转发传输</p>
+
+<p>对比电路交换和分组交换的优缺点，熟悉分组交换网络的特征</p>
+
+<p>因特网结构：网络的网络</p>
+
+<h2 id="三分组交换网">三、分组交换网</h2>
+<p>关键词：时延、丢包、吞吐量</p>
+
+<p>时延=节点处理时延+排队时延+传播时延+传输时延<br />
+流量强度=分组长度×平均分组到达速率÷链路带宽，与平均排队时延正相关<br />
+丢包的原因：队列缓存容量有限<br />
+吞吐量：实际数据传输速率（受瓶颈链路限制）</p>
+
+<h2 id="四协议层次及其服务模型">四、协议层次及其服务模型</h2>
+<p>因特网协议栈：<br />
+<img src="/assets/png/2024-09-3.png" alt="图片" />
+协议三要素：语法、语义、同步</p>
+
+<p>通过协议栈服务模型实现层对层的封装</p>
+
+
+		</div>
+		<div id="valine-comments">
+
+
+		</div>
+		<script>
+			new Valine({
+			  el: '#valine-comments',
+			  appId: 'IRj09zYXUGh9ZfvZKMJEZPh1-gzGzoHsz',
+			  appKey: 'DDvBjJK453ByPX9gfe04YSQj',
+			  placeholder: '说点什么吧！',
+			  path: window.location.pathname, // 当前页面路径，用于区分不同文章
+			  avatar: 'wavatar',
+			  pageSize: 10,
+			  enableQQ: false
+			});
+		  </script>
+	</div>
+</div>
+
+</div>
+	<footer class="main-footer">
+		<p class="wc-container disclaimer">
+			<!--生成页尾-->
+&copy; 2024-<span id="cur_year"></span> <a href="https://github.com/cho159" target="blank">CH053N</a> - All Rights Reserved.
+Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="https://github.com/kuanghy/kuanghy.github.io" target="_blank">Github.com</a>
+<script type="text/javascript">
+    var cur_date = new Date();
+    document.getElementById("cur_year").innerHTML = cur_date.getFullYear();
+</script>
+		</p>
+
+	</footer>
+  	</body>
+</html>
