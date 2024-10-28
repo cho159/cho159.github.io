@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <title>Sql注入&Nosql注入&XSS漏洞小结</title>
+		<link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
+		<link rel="stylesheet" type="text/css" href="/assets/css/reset.css">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+  	</head>
+  	<body>
+		<header class="main-header">
+			<div class="wc-container">
+				<h1 class="site-title"><a href="/" class="title-link">CH053N的个人博客</a></h1>
+                		<h3 class="site-description"><i>C'est la vie.</i></h3>
+						<!-- 生成导航栏 -->
+<div class="header">
+    <ul>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/" class="headerItem">
+                主页
+            </a>
+            
+                <span>&raquo;</span>
+            
+        </li>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/archive/" class="headerItem">
+                归档
+            </a>
+            
+                <span>&raquo;</span>
+            
+        </li>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/categories/" class="headerItem">
+                分类
+            </a>
+            
+                <span>&raquo;</span>
+            
+        </li>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/tags/" class="headerItem">
+                标签
+            </a>
+            
+        </li>
+    
+    </ul>
+</div>
+
+			</div>
+		</header>
+<div class="main-content">
+    <div class="page-content wc-container">
+
+	<div class="post">
+		<h1>Sql注入&Nosql注入&XSS漏洞小结</h1>
+		<p class="post-meta">
+			
+      <span class="categories">
+      网络安全
+      </span> |
+	    
+	  <span class="post-date">
+    	Oct 28, 2024
+	</span> 
+	   |
+	  
+	  <span class="categories">
+		  
+			  <a href="/tags/#web">web</a>
+		  
+	  </span>
+	  
+		</p>
+		<div class="post">
+			<p><strong>总结之前做过的相关漏洞学习笔记</strong></p>
+
+<h2 id="纲要知识">纲要知识</h2>
+<p>–base64编码原理<br />
+–Unicode编码以及UTF-8的编码原理<br />
+–SQL注入<br />
+    -了解不同SQL数据库中的SQL语法<br />
+        常用SQL注入语法表单：https://portswigger.net/web-security/sql-injection/cheat-sheet<br />
+    -利用SQL注入改变应用交互逻辑<br />
+    -union攻击<br />
+    -SQL盲注（基于布尔条件响应、基于布尔条件报错、基于详细报错信息、基于时间延迟、带外技术等）<br />
+–了解json数据格式和Javascript基础语法<br />
+–正则表达式的格式及使用<br />
+    语法详解：https://www.runoob.com/regexp/regexp-syntax.html<br />
+–NoSQL注入：语法注入、操作符注入<br />
+    -熟悉noSQL操作符（MongoDB常用操作符：$where,$ne,$regex,$in）<br />
+–浏览器同源策略和CORS策略<br />
+–XSS攻击：反射型XSS，存储型XSS，DOM型XSS<br />
+    -熟悉html格式和常用html语法<br />
+    -使用开发者工具进行页面测试<br />
+    -测试XSS<br />
+        对于DOM型XSS，掌握漏洞sink：document.write，innerHTML，hashchange等</p>
+
+<h2 id="杂记知识点">杂记知识点</h2>
+<p>–JSON和XML都是数据交换格式语言<br />
+–Object.keys(obj)返回值是对象中每一项key的数组，Object.values(obj)返回值是一个包含对象自身的所有可枚举属性值的数组<br />
+–触发alert()常用payload：https://www.cnblogs.com/xyz315/p/14850359.html<br />
+–XSS漏洞事件函数：https://blog.csdn.net/qq_63844103/article/details/128009363<br />
+–测试XSS漏洞详细指南（测试方法）：https://blog.csdn.net/Gherbirthday0916/article/details/138494063<br />
+–漏洞挖掘实战历程：https://cloud.tencent.com/developer/article/2008742<br />
+–XSS漏洞基础知识：<br />
+    在XSS漏洞中，sink 是指数据流的终点，即数据最终被处理或执行的地方。在 XSS 攻击中，sink 通常是浏览器中执行 JavaScript 代码的地方。攻击者通过将恶意代码注入到应用程序中，并确保这些代码在浏览器中执行，从而实现攻击目的。具体来说，sink 可以是以下几种情况：<br />
+    1.DOM 操作：如 innerHTML、document.write 等方法，这些方法会将数据直接插入到页面的 DOM 中并执行。<br />
+    2.事件处理器：如 onclick、onmouseover 等事件属性，这些属性会在特定事件发生时执行代码。<br />
+    3.JavaScript 执行环境：如 eval、setTimeout、setInterval 等函数，这些函数会动态执行传入的字符串作为代码。<br />
+    -在XSS漏洞中，source 是指数据流的起点，即用户输入或外部数据进入应用程序的地方。常见的 source 包括：<br />
+    1.用户输入：如表单输入、URL 参数、HTTP 请求头等。<br />
+    2.外部数据：如从数据库、文件系统或第三方 API 获取的数据。<br />
+    -在XSS漏洞中，anchor（锚点）通常用来指在DOM中可能成为恶意脚本注入的具体位置。虽然这个术语在XSS文献中并不如source和sink那么常见，但可以理解为一个特定的sink类型或是一个容易成为攻击目标的DOM节点位置。<br />
+–识别网页使用的js框架：<br />
+    控制台命令<br />
+        jQuery: !!window.jQuery<br />
+        AngularJS: !!window.angular<br />
+        React: !!window.React<br />
+        Vue.js: !!window.Vue<br />
+–在AngularJS中，$on是一个事件处理函数，而constructor是一个特殊的方法，用于创建和初始化类对象实例。当你看到$on.constructor时，它实际上是在调用构造函数，并传递参数来执行其字符串形式的代码。例如，$on.constructor(‘alert(1)’)()会弹出一个警告框，显示数字1。<br />
+    链接：https://stackoverflow.com/questions/72637416/what-does-on-constructor-do-in-angularjs</p>
+
+		</div>
+		<div id="valine-comments">
+
+
+		</div>
+		<script>
+			new Valine({
+			  el: '#valine-comments',
+			  appId: 'IRj09zYXUGh9ZfvZKMJEZPh1-gzGzoHsz',
+			  appKey: 'DDvBjJK453ByPX9gfe04YSQj',
+			  placeholder: '说点什么吧！',
+			  path: window.location.pathname, // 当前页面路径，用于区分不同文章
+			  avatar: 'wavatar',
+			  pageSize: 10,
+			  enableQQ: false
+			});
+		  </script>
+	</div>
+</div>
+
+</div>
+	<footer class="main-footer">
+		<p class="wc-container disclaimer">
+			<!--生成页尾-->
+&copy; 2024-<span id="cur_year"></span> <a href="https://github.com/cho159" target="blank">CH053N</a> - All Rights Reserved.
+Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="https://github.com/kuanghy/kuanghy.github.io" target="_blank">Github.com</a>
+<script type="text/javascript">
+    var cur_date = new Date();
+    document.getElementById("cur_year").innerHTML = cur_date.getFullYear();
+</script>
+		</p>
+
+	</footer>
+  	</body>
+</html>
