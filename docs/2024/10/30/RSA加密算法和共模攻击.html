@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <title>RSA加密算法和共模攻击</title>
+		<link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
+		<link rel="stylesheet" type="text/css" href="/assets/css/reset.css">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+  	</head>
+  	<body>
+		<header class="main-header">
+			<div class="wc-container">
+				<h1 class="site-title"><a href="/" class="title-link">CH053N的个人博客</a></h1>
+                		<h3 class="site-description"><i>C'est la vie.</i></h3>
+						<!-- 生成导航栏 -->
+<div class="header">
+    <ul>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/" class="headerItem">
+                主页
+            </a>
+            
+                <span>&raquo;</span>
+            
+        </li>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/archive/" class="headerItem">
+                归档
+            </a>
+            
+                <span>&raquo;</span>
+            
+        </li>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/categories/" class="headerItem">
+                分类
+            </a>
+            
+                <span>&raquo;</span>
+            
+        </li>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/tags/" class="headerItem">
+                标签
+            </a>
+            
+        </li>
+    
+    </ul>
+</div>
+
+			</div>
+		</header>
+<div class="main-content">
+    <div class="page-content wc-container">
+
+	<div class="post">
+		<h1>RSA加密算法和共模攻击</h1>
+		<p class="post-meta">
+			
+      <span class="categories">
+      网络安全
+      </span> |
+	    
+	  <span class="post-date">
+    	Oct 30, 2024
+	</span> 
+	   |
+	  
+	  <span class="categories">
+		  
+			  <a href="/tags/#crypto">crypto</a>
+		  
+	  </span>
+	  
+		</p>
+		<div class="post">
+			<h2 id="一rsa加密算法">一、RSA加密算法</h2>
+<p>RSA公开密钥密码体制原理：将两个大素数的乘积因式分解过于困难，可以将乘积公开作为加密密钥</p>
+
+<p>具体加密流程如下：</p>
+
+<p>（1）选取大素数p和q，计算乘积n=pq，以及φ(n)=(p-1)(q-1)。（欧拉函数）</p>
+
+<p>（2）选择一个大整数e作为加密密钥，满足e与φ(n)互素即gcd(e,φ(n))=1。（e要大于p和q）</p>
+
+<p>（3）确定解密密钥d，满足(de)modφ(n)=1。知道e和φ(n)求逆元就可求出d。</p>
+
+<p>（4） 将明文m加密成密文c，pow(m,e,n)=c（m的e次幂模n，下同）</p>
+
+<p>（5）将密文解密为明文m，pow(c,d,n)=m</p>
+
+<p>则(n,e)为公钥，(n,d)为私钥。以小数为例：选取素数3和11，则n=33,φ(n)=20，选取e=3为密钥，则解密密钥d=7,此后，pow(明文,3,33)=密文，pow(密文,7,33)=明文。由于大数n难以被分解，无法直接通过n和e推出d的值。</p>
+
+<h2 id="二共模攻击">二、共模攻击</h2>
+<p>原理：在RSA加密算法中，利用不同的e和相同的p，q进行两次加密后，通过两次密文c求明文m。</p>
+
+<p>条件：pow(m,e1,n)=a,pow(m,e2,n)=b,gcd(e1,e2)=1.e1,e2,a,b已知，恢复明文m</p>
+
+<p>数学推导：由裴蜀定理，对任何整数e1、e2，存在整数x和y，使得e1x + e2y = gcd(e1,e2)成立，可通过扩展欧几里得算法得到x和y。‌调用python gmpy2库中的函数gmpy2.gcdext(e1,e2)返回三个数gcd(e1,e2),x,y.则pow(a,x,n) * pow(b,y,n)=pow(m,e1x,n) * pow(m,e2y,n)=pow(m,1,n)=m,即为明文</p>
+
+<p>启示：确保每个用户生成独特的模数 n。即使用户使用相同的公钥指数 e，也要确保 n 不同，以防止共模攻击。</p>
+
+<p>RSA例题：</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">Crypto.Util.number</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="n">secret</span> <span class="kn">import</span> <span class="n">flag</span><span class="p">,</span><span class="n">e1</span><span class="p">,</span><span class="n">e2</span><span class="p">,</span><span class="n">e3</span>
+
+<span class="n">m1</span> <span class="o">=</span> <span class="nf">bytes_to_long</span><span class="p">(</span><span class="nf">bytes</span><span class="p">(</span><span class="n">flag</span><span class="p">.</span><span class="nf">encode</span><span class="p">()))</span>
+<span class="n">p</span> <span class="o">=</span> <span class="nf">getPrime</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">=</span> <span class="nf">getPrime</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">p</span><span class="o">*</span><span class="n">q</span>
+
+<span class="n">flag1</span> <span class="o">=</span> <span class="nf">pow</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span><span class="n">e1</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+<span class="n">flag2</span> <span class="o">=</span> <span class="nf">pow</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span><span class="n">e2</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+<span class="n">flag3</span> <span class="o">=</span> <span class="nf">pow</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span><span class="n">e3</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">flag1= </span><span class="sh">'</span><span class="o">+</span><span class="nf">str</span><span class="p">(</span><span class="n">flag1</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">flag2= </span><span class="sh">'</span><span class="o">+</span><span class="nf">str</span><span class="p">(</span><span class="n">flag2</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">flag3= </span><span class="sh">'</span><span class="o">+</span><span class="nf">str</span><span class="p">(</span><span class="n">flag3</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">e1= </span><span class="sh">'</span> <span class="o">+</span><span class="nf">str</span><span class="p">(</span><span class="n">e1</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">e2= </span><span class="sh">'</span><span class="o">+</span><span class="nf">str</span><span class="p">(</span><span class="n">e2</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">e3= </span><span class="sh">'</span><span class="o">+</span><span class="nf">str</span><span class="p">(</span><span class="n">e3</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">n= </span><span class="sh">'</span><span class="o">+</span><span class="nf">str</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+
+<span class="sh">'''</span><span class="s">
+flag1= 8474478534133750496351258439770439219153979952561642731581390416228867640587693486357078135921546443963283105927150253272336059382390513817706698741025531526550326710611170554397057390714665263299882969421138898580414905289818079694175809121588275768717653289810969178070603654027459939946312773093941446287417784032902650734437554613303784830203578240545070093473942475651339619315817364422284273133164774638578085796267096957347085168021778125470616046598013171354398170377063192357733840050955181584705301456304877682550520037398962644014863486620415201523880999542686731895448726980398631515217315286020437688498
+flag2= 3351384523931867313334817228598784440559751009017798910409840467537119821259012274549685345550490291816260612536289106819125192140760817375064269268775476031424892776272822066072079425305661428795671314658531045416112945555811194297108918942072330688307026110408024089214342917098967614776154381488672421957083146560757683623642006092146862507588998409298919637353660377267802188093929938573350202326786505140838600085071746441060977159281922113489848540031614769737591885173161155206855583607310005623436257762906278289722207498226001933784659324565536246902660945534285429590539413563048095506554626251616237676085
+flag3= 5985698167580292228103775342057124425925837097208523314550523309415437277838160594697403652576181505738376124206117744930374928505854417093291293722474344968937532770265145298388658073650787591858476178872911073027696260914967170228919432784475518233719515218760252671051270000581279546881292735906936176213503922783551190771955716934727562595180860790040848587585167859997365531513159440802207174497260444085610261175085531334936547028947562016756271409639098566910202260260565739379965380545050237791613249984011652443416356033660746709478575412073746217796066838355640159345205738259110105894918059407651872299890
+e1= 1009755935113158588369659
+e2= 917570089742429076148529
+e3= 897161019325217314301779
+n= 11295998674923997915943754979924400482910956167036135115104616066253068788768361485681020525394574700945440467310782667910252047979768627604509086553949220752907396584699810630157139575845491574958788530608310999859562983302417094883322550125648741172503117372394024013743440114452080863483618324236843484216327589328115588675048041658149492207605113019716406368620938899561099206060294485156146873711072426006320715336473956395729172889050029370044109346990187611892568329248392149357401050824185160821078105634351600311316865993926248187857295191981143425250483512228653210803684450509179107949521855027236290889869
+</span><span class="sh">'''</span>
+<span class="c1">#e1=993627907847*1016231455597
+#e2=902914473557*1016231455597
+#e3=902914473557*993627907847
+</span></code></pre></div></div>
+
+<p>思路：与常规的共模攻击相比，这里提供了三组公钥和密文，但加密密钥两两不互素，因此对前两次利用裴蜀定理做一次共模运算，再和第三次进行共模运算即可。</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">math</span>
+<span class="kn">import</span> <span class="n">libnum</span>
+<span class="kn">import</span> <span class="n">gmpy2</span>
+<span class="c1">#e1=993627907847*1016231455597
+#e2=902914473557*1016231455597
+#e3=902914473557*993627907847
+</span><span class="n">flag1</span><span class="o">=</span> <span class="mi">8474478534133750496351258439770439219153979952561642731581390416228867640587693486357078135921546443963283105927150253272336059382390513817706698741025531526550326710611170554397057390714665263299882969421138898580414905289818079694175809121588275768717653289810969178070603654027459939946312773093941446287417784032902650734437554613303784830203578240545070093473942475651339619315817364422284273133164774638578085796267096957347085168021778125470616046598013171354398170377063192357733840050955181584705301456304877682550520037398962644014863486620415201523880999542686731895448726980398631515217315286020437688498</span>
+<span class="n">flag2</span><span class="o">=</span> <span class="mi">3351384523931867313334817228598784440559751009017798910409840467537119821259012274549685345550490291816260612536289106819125192140760817375064269268775476031424892776272822066072079425305661428795671314658531045416112945555811194297108918942072330688307026110408024089214342917098967614776154381488672421957083146560757683623642006092146862507588998409298919637353660377267802188093929938573350202326786505140838600085071746441060977159281922113489848540031614769737591885173161155206855583607310005623436257762906278289722207498226001933784659324565536246902660945534285429590539413563048095506554626251616237676085</span>
+<span class="n">flag3</span><span class="o">=</span> <span class="mi">5985698167580292228103775342057124425925837097208523314550523309415437277838160594697403652576181505738376124206117744930374928505854417093291293722474344968937532770265145298388658073650787591858476178872911073027696260914967170228919432784475518233719515218760252671051270000581279546881292735906936176213503922783551190771955716934727562595180860790040848587585167859997365531513159440802207174497260444085610261175085531334936547028947562016756271409639098566910202260260565739379965380545050237791613249984011652443416356033660746709478575412073746217796066838355640159345205738259110105894918059407651872299890</span>
+<span class="n">e1</span><span class="o">=</span> <span class="mi">1009755935113158588369659</span>
+<span class="n">e2</span><span class="o">=</span> <span class="mi">917570089742429076148529</span>
+<span class="n">e3</span><span class="o">=</span> <span class="mi">897161019325217314301779</span>
+<span class="n">n</span><span class="o">=</span> <span class="mi">11295998674923997915943754979924400482910956167036135115104616066253068788768361485681020525394574700945440467310782667910252047979768627604509086553949220752907396584699810630157139575845491574958788530608310999859562983302417094883322550125648741172503117372394024013743440114452080863483618324236843484216327589328115588675048041658149492207605113019716406368620938899561099206060294485156146873711072426006320715336473956395729172889050029370044109346990187611892568329248392149357401050824185160821078105634351600311316865993926248187857295191981143425250483512228653210803684450509179107949521855027236290889869</span>
+<span class="n">k1</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="nf">gcd</span><span class="p">(</span><span class="n">e1</span><span class="p">,</span> <span class="n">e2</span><span class="p">)</span>
+<span class="n">gcd1</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="o">=</span><span class="n">gmpy2</span><span class="p">.</span><span class="nf">gcdext</span><span class="p">(</span><span class="n">e1</span><span class="p">,</span><span class="n">e2</span><span class="p">)</span>
+<span class="n">c4</span><span class="o">=</span><span class="nf">pow</span><span class="p">(</span><span class="n">flag1</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="nf">pow</span><span class="p">(</span><span class="n">flag2</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">n</span><span class="p">)</span><span class="o">%</span><span class="n">n</span>
+<span class="n">gcd2</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="o">=</span><span class="n">gmpy2</span><span class="p">.</span><span class="nf">gcdext</span><span class="p">(</span><span class="n">gcd1</span><span class="p">,</span><span class="n">e3</span><span class="p">)</span>
+<span class="n">m</span><span class="o">=</span><span class="nf">pow</span><span class="p">(</span><span class="n">c4</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="nf">pow</span><span class="p">(</span><span class="n">flag3</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="n">n</span><span class="p">)</span><span class="o">%</span><span class="n">n</span>
+<span class="n">byte_length</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="nf">bit_length</span><span class="p">()</span> <span class="o">+</span> <span class="mi">7</span><span class="p">)</span> <span class="o">//</span> <span class="mi">8</span>
+<span class="n">byte_array</span> <span class="o">=</span> <span class="n">m</span><span class="p">.</span><span class="nf">to_bytes</span><span class="p">(</span><span class="n">byte_length</span><span class="p">,</span> <span class="n">byteorder</span><span class="o">=</span><span class="sh">'</span><span class="s">big</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">flag</span> <span class="o">=</span> <span class="n">byte_array</span><span class="p">.</span><span class="nf">decode</span><span class="p">()</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
+</code></pre></div></div>
+<p>得到flag:
+<img src="/assets/png/2024-10-9.png" alt="图片" /></p>
+
+
+		</div>
+		<div id="valine-comments">
+
+
+		</div>
+		<script>
+			new Valine({
+			  el: '#valine-comments',
+			  appId: 'IRj09zYXUGh9ZfvZKMJEZPh1-gzGzoHsz',
+			  appKey: 'DDvBjJK453ByPX9gfe04YSQj',
+			  placeholder: '说点什么吧！',
+			  path: window.location.pathname, // 当前页面路径，用于区分不同文章
+			  avatar: 'wavatar',
+			  pageSize: 10,
+			  enableQQ: false
+			});
+		  </script>
+	</div>
+</div>
+
+</div>
+	<footer class="main-footer">
+		<p class="wc-container disclaimer">
+			<!--生成页尾-->
+&copy; 2024-<span id="cur_year"></span> <a href="https://github.com/cho159" target="blank">CH053N</a> - All Rights Reserved.
+Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="https://github.com/kuanghy/kuanghy.github.io" target="_blank">Github.com</a>
+<script type="text/javascript">
+    var cur_date = new Date();
+    document.getElementById("cur_year").innerHTML = cur_date.getFullYear();
+</script>
+		</p>
+
+	</footer>
+  	</body>
+</html>
