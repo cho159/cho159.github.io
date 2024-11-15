@@ -2,7 +2,7 @@
 <html>
 	<head>
 	    <meta charset="utf-8">
-	    <title>计网自顶向下--第一章复习</title>
+	    <title>计网--第二章复习</title>
 		<link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
 		<link rel="stylesheet" type="text/css" href="/assets/css/reset.css">
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
@@ -60,7 +60,7 @@
     <div class="page-content wc-container">
 
 	<div class="post">
-		<h1>计网自顶向下--第一章复习</h1>
+		<h1>计网--第二章复习</h1>
 		<p class="post-meta">
 			
       <span class="categories">
@@ -68,7 +68,7 @@
       </span> |
 	    
 	  <span class="post-date">
-    	Sep 29, 2024
+    	Nov 14, 2024
 	</span> 
 	   |
 	  
@@ -80,50 +80,42 @@
 	  
 		</p>
 		<div class="post">
-			<h2 id="一因特网">一、因特网</h2>
-<p>关键词：主机/端系统、通信链路的传输速率（带宽）、分组交换机（链路交换机、路由器）、协议</p>
+			<h2 id="一应用层协议原理">一、应用层协议原理</h2>
+<p>C/S结构：<br />
+服务器：总是打开，有固定地址，缩放的数据中心<br />
+客户端：与服务器通信，间歇性连接，可有动态IP地址，客户端间不通信</p>
 
-<p>因特网提供的服务：<br />
-<img src="/assets/png/2024-09-1.png" alt="图片" /></p>
+<p>P2P结构：结点间直接通信，任何一方既提供服务又享受服务<br />
+混合体系结构</p>
 
-<h2 id="二网络边缘和网络核心">二、网络边缘和网络核心</h2>
-<p><strong>网络边缘</strong>：</p>
+<p>套接字长度：IP（32位）+端口（16位）=48位<br />
+传输协议：TCP，UDP</p>
 
-<p>通信模型：C/S模型、P2P模型、混合模型</p>
+<h2 id="二web应用和http协议">二、web应用和HTTP协议</h2>
 
-<p>接入网和边缘路由器的概念</p>
+<p>web服务器：Apache,IIS,TomCa…<br />
+浏览器：IE,Maxthon,Firefox<br />
+协议：HTTP-信息传输,HTML-信息表达</p>
 
-<p>物理媒介：导引型和非导引型</p>
+<p>HTTP特点：TCP传输，无状态<br />
+非持续HTTP/持续HTTP<br />
+持久连接又分为：流水线方式/非流水线方式<br />
+HTTP1.0报文方法：GET,POST,HEAD<br />
+HTTP1.1新增PUT,DELETE</p>
 
-<p><strong>网络核心</strong>：</p>
+<p>cookie，web缓存（更新副本：条件get方法）</p>
 
-<p>数据传输方式：电路交换和分组交换（重点）</p>
+<h2 id="三ftp协议和smtp协议">三、FTP协议和SMTP协议</h2>
 
-<p>电路交换:预留资源、始终占用、无延迟、独占带宽
-技术：频分复用、时分复用</p>
+<p>FTP特点：TCP协议，带外传送，有状态
+SMTP：邮件服务器，MIME类型，POP3协议/IMAP协议</p>
 
-<p>分组交换：
-<img src="/assets/png/2024-09-2.png" alt="图片" /><br />
-模式：存储转发传输</p>
+<h2 id="四dns">四、DNS</h2>
+<p>特点：分布式数据库，运行在端到端系统，UDP协议，C/S模式</p>
 
-<p>对比电路交换和分组交换的优缺点，熟悉分组交换网络的特征</p>
-
-<p>因特网结构：网络的网络</p>
-
-<h2 id="三分组交换网">三、分组交换网</h2>
-<p>关键词：时延、丢包、吞吐量</p>
-
-<p>时延=节点处理时延+排队时延+传播时延+传输时延<br />
-流量强度=分组长度×平均分组到达速率÷链路带宽，与平均排队时延正相关<br />
-丢包的原因：队列缓存容量有限<br />
-吞吐量：实际数据传输速率（受瓶颈链路限制）</p>
-
-<h2 id="四协议层次及其服务模型">四、协议层次及其服务模型</h2>
-<p>因特网协议栈：<br />
-<img src="/assets/png/2024-09-3.png" alt="图片" />
-协议三要素：语法、语义、同步</p>
-
-<p>通过协议栈服务模型实现层对层的封装</p>
+<p>实现：根DNS服务器，顶级域服务器，权威DNS服务器<br />
+发起请求为递归查询，后续请求为迭代查询<br />
+DNS缓存</p>
 
 
 		</div>

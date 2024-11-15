@@ -475,6 +475,160 @@ Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="h
 <html>
 	<head>
 	    <meta charset="utf-8">
+	    <title>计网--第二章复习</title>
+		<link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
+		<link rel="stylesheet" type="text/css" href="/assets/css/reset.css">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+  	</head>
+  	<body>
+		<header class="main-header">
+			<div class="wc-container">
+				<h1 class="site-title"><a href="/" class="title-link">CH053N的个人博客</a></h1>
+                		<h3 class="site-description"><i>C'est la vie.</i></h3>
+						<!-- 生成导航栏 -->
+<div class="header">
+    <ul>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/" class="headerItem">
+                主页
+            </a>
+            
+                <span>&raquo;</span>
+            
+        </li>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/archive/" class="headerItem">
+                归档
+            </a>
+            
+                <span>&raquo;</span>
+            
+        </li>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/categories/" class="headerItem">
+                分类
+            </a>
+            
+                <span>&raquo;</span>
+            
+        </li>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/tags/" class="headerItem">
+                标签
+            </a>
+            
+        </li>
+    
+    </ul>
+</div>
+
+			</div>
+		</header>
+<div class="main-content">
+    <div class="page-content wc-container">
+
+	<div class="post">
+		<h1>计网--第二章复习</h1>
+		<p class="post-meta">
+			
+      <span class="categories">
+      网络安全
+      </span> |
+	    
+	  <span class="post-date">
+    	Nov 14, 2024
+	</span> 
+	   |
+	  
+	  <span class="categories">
+		  
+			  <a href="/tags/#网络">网络</a>
+		  
+	  </span>
+	  
+		</p>
+		<div class="post">
+			<h2 id="一应用层协议原理">一、应用层协议原理</h2>
+<p>C/S结构：<br />
+服务器：总是打开，有固定地址，缩放的数据中心<br />
+客户端：与服务器通信，间歇性连接，可有动态IP地址，客户端间不通信</p>
+
+<p>P2P结构：结点间直接通信，任何一方既提供服务又享受服务<br />
+混合体系结构</p>
+
+<p>套接字长度：IP（32位）+端口（16位）=48位<br />
+传输协议：TCP，UDP</p>
+
+<h2 id="二web应用和http协议">二、web应用和HTTP协议</h2>
+
+<p>web服务器：Apache,IIS,TomCa…<br />
+浏览器：IE,Maxthon,Firefox<br />
+协议：HTTP-信息传输,HTML-信息表达</p>
+
+<p>HTTP特点：TCP传输，无状态<br />
+非持续HTTP/持续HTTP<br />
+持久连接又分为：流水线方式/非流水线方式<br />
+HTTP1.0报文方法：GET,POST,HEAD<br />
+HTTP1.1新增PUT,DELETE</p>
+
+<p>cookie，web缓存（更新副本：条件get方法）</p>
+
+<h2 id="三ftp协议和smtp协议">三、FTP协议和SMTP协议</h2>
+
+<p>FTP特点：TCP协议，带外传送，有状态
+SMTP：邮件服务器，MIME类型，POP3协议/IMAP协议</p>
+
+<h2 id="四dns">四、DNS</h2>
+<p>特点：分布式数据库，运行在端到端系统，UDP协议，C/S模式</p>
+
+<p>实现：根DNS服务器，顶级域服务器，权威DNS服务器<br />
+发起请求为递归查询，后续请求为迭代查询<br />
+DNS缓存</p>
+
+
+		</div>
+		<div id="valine-comments">
+
+
+		</div>
+		<script>
+			new Valine({
+			  el: '#valine-comments',
+			  appId: 'IRj09zYXUGh9ZfvZKMJEZPh1-gzGzoHsz',
+			  appKey: 'DDvBjJK453ByPX9gfe04YSQj',
+			  placeholder: '说点什么吧！',
+			  path: window.location.pathname, // 当前页面路径，用于区分不同文章
+			  avatar: 'wavatar',
+			  pageSize: 10,
+			  enableQQ: false
+			});
+		  </script>
+	</div>
+</div>
+
+</div>
+	<footer class="main-footer">
+		<p class="wc-container disclaimer">
+			<!--生成页尾-->
+&copy; 2024-<span id="cur_year"></span> <a href="https://github.com/cho159" target="blank">CH053N</a> - All Rights Reserved.
+Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="https://github.com/kuanghy/kuanghy.github.io" target="_blank">Github.com</a>
+<script type="text/javascript">
+    var cur_date = new Date();
+    document.getElementById("cur_year").innerHTML = cur_date.getFullYear();
+</script>
+		</p>
+
+	</footer>
+  	</body>
+</html><!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
 	    <title>RSA加密算法和共模攻击</title>
 		<link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
 		<link rel="stylesheet" type="text/css" href="/assets/css/reset.css">
@@ -1076,7 +1230,7 @@ Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="h
 <html>
 	<head>
 	    <meta charset="utf-8">
-	    <title>计网自顶向下--第一章复习</title>
+	    <title>计网--第一章复习</title>
 		<link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
 		<link rel="stylesheet" type="text/css" href="/assets/css/reset.css">
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
@@ -1134,7 +1288,7 @@ Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="h
     <div class="page-content wc-container">
 
 	<div class="post">
-		<h1>计网自顶向下--第一章复习</h1>
+		<h1>计网--第一章复习</h1>
 		<p class="post-meta">
 			
       <span class="categories">
