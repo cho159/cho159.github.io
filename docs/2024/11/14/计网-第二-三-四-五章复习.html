@@ -2,7 +2,7 @@
 <html>
 	<head>
 	    <meta charset="utf-8">
-	    <title>计网--第二章复习</title>
+	    <title>计网--第二、三、四、五章复习</title>
 		<link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
 		<link rel="stylesheet" type="text/css" href="/assets/css/reset.css">
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
@@ -60,7 +60,7 @@
     <div class="page-content wc-container">
 
 	<div class="post">
-		<h1>计网--第二章复习</h1>
+		<h1>计网--第二、三、四、五章复习</h1>
 		<p class="post-meta">
 			
       <span class="categories">
@@ -80,7 +80,8 @@
 	  
 		</p>
 		<div class="post">
-			<h2 id="一应用层协议原理">一、应用层协议原理</h2>
+			<h1 id="第二章">第二章</h1>
+<h2 id="一应用层协议原理">一、应用层协议原理</h2>
 <p>C/S结构：<br />
 服务器：总是打开，有固定地址，缩放的数据中心<br />
 客户端：与服务器通信，间歇性连接，可有动态IP地址，客户端间不通信</p>
@@ -107,7 +108,7 @@ HTTP1.1新增PUT,DELETE</p>
 
 <h2 id="三ftp协议和smtp协议">三、FTP协议和SMTP协议</h2>
 
-<p>FTP特点：TCP协议，带外传送，有状态
+<p>FTP特点：TCP协议，带外传送，有状态<br />
 SMTP：邮件服务器，MIME类型，POP3协议/IMAP协议</p>
 
 <h2 id="四dns">四、DNS</h2>
@@ -117,6 +118,21 @@ SMTP：邮件服务器，MIME类型，POP3协议/IMAP协议</p>
 发起请求为递归查询，后续请求为迭代查询<br />
 DNS缓存</p>
 
+<h1 id="第三章">第三章</h1>
+<p>运输层协议服务：进程间数据交付、差错检测、可靠的数据传输、拥塞控制</p>
+<h2 id="一多路复用与多路分解">一、多路复用与多路分解</h2>
+
+<p>TCP套接字：四元组标识。（面向连接）<br />
+UDP套接字：二元组标识</p>
+
+<p>UDP和TCP特点和优缺点比较</p>
+
+<p>UDP首部：源端口、目的端口、长度、检验和</p>
+
+<h2 id="二可靠信道传输原理">二、可靠信道传输原理</h2>
+
+<p>关键词：rdt控制机制，流水线技术，GBN协议，SR协议
+<img src="/assets/png/2024-11-1.png" alt="图片" /></p>
 
 		</div>
 		<div id="valine-comments">
