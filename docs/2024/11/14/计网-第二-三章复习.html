@@ -2,7 +2,7 @@
 <html>
 	<head>
 	    <meta charset="utf-8">
-	    <title>计网--第二、三、四、五章复习</title>
+	    <title>计网--第二、三章复习</title>
 		<link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
 		<link rel="stylesheet" type="text/css" href="/assets/css/reset.css">
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
@@ -60,7 +60,7 @@
     <div class="page-content wc-container">
 
 	<div class="post">
-		<h1>计网--第二、三、四、五章复习</h1>
+		<h1>计网--第二、三章复习</h1>
 		<p class="post-meta">
 			
       <span class="categories">
@@ -132,7 +132,18 @@ UDP套接字：二元组标识</p>
 <h2 id="二可靠信道传输原理">二、可靠信道传输原理</h2>
 
 <p>关键词：rdt控制机制，流水线技术，GBN协议，SR协议
-<img src="/assets/png/2024-11-1.png" alt="图片" /></p>
+<img src="/assets/png/2024-11-1.png" alt="图片" />
+GBN：累计确认,丢包后其后分组全部重传,统一设置定时器，接收方无缓存<br />
+<img src="/assets/png/2024-11-2.png" alt="图片" />
+SR：丢包后选择重传，为每个分组设置定时器，接收方缓存失序到达的分组
+<img src="/assets/png/2024-11-3.png" alt="图片" /></p>
+
+<p>TCP:面向连接，全双工服务，点对点连接，三次握手，可靠字节流<br />
+累计确认，单一计时器，快速重传（3个重复ACK），按字节编号</p>
+
+<p>TCP流量控制：接收方缓存满时，持续发送一字节数据<br />
+拥塞控制：加性增，乘性减<br />
+慢启动（指数增长），拥塞避免，超时则重新慢启动，快速重传则门限值减半，拥塞窗口为门限值+3</p>
 
 		</div>
 		<div id="valine-comments">
