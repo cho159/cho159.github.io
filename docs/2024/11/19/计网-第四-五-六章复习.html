@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <title>计网--第四、五、六章复习</title>
+		<link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
+		<link rel="stylesheet" type="text/css" href="/assets/css/reset.css">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+  	</head>
+  	<body>
+		<header class="main-header">
+			<div class="wc-container">
+				<h1 class="site-title"><a href="/" class="title-link">CH053N的个人博客</a></h1>
+                		<h3 class="site-description"><i>C'est la vie.</i></h3>
+						<!-- 生成导航栏 -->
+<div class="header">
+    <ul>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/" class="headerItem">
+                主页
+            </a>
+            
+                <span>&raquo;</span>
+            
+        </li>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/archive/" class="headerItem">
+                归档
+            </a>
+            
+                <span>&raquo;</span>
+            
+        </li>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/categories/" class="headerItem">
+                分类
+            </a>
+            
+                <span>&raquo;</span>
+            
+        </li>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/tags/" class="headerItem">
+                标签
+            </a>
+            
+        </li>
+    
+    </ul>
+</div>
+
+			</div>
+		</header>
+<div class="main-content">
+    <div class="page-content wc-container">
+
+	<div class="post">
+		<h1>计网--第四、五、六章复习</h1>
+		<p class="post-meta">
+			
+      <span class="categories">
+      网络安全
+      </span> |
+	    
+	  <span class="post-date">
+    	Nov 19, 2024
+	</span> 
+	   |
+	  
+	  <span class="categories">
+		  
+			  <a href="/tags/#网络">网络</a>
+		  
+	  </span>
+	  
+		</p>
+		<div class="post">
+			<h1 id="第四五章">第四、五章</h1>
+<h2 id="一路由器工作原理">一、路由器工作原理</h2>
+<p>网络层：主机到主机</p>
+
+<p>在全局范畴为主机之间的通信进行选路，选路的结果反
+映为分组交换机（设备）上的转发表 （控制层面）<br />
+分组交换机（设备）上的网络层根据转发表以及分组头
+部信息，将分组向适当链路进行转发（数据层面）</p>
+
+<p>分组交换机分类：链路层交换机、路由器</p>
+
+<p>互联网：尽力而为服务</p>
+
+<p>基于目标的转发：最长前缀匹配原则</p>
+
+<p>路由器：<br />
+交换结构：总线、互联网络、内存<br />
+调度策略：FIFO、优先级排队、循环调度、加权公平队列</p>
+
+<h2 id="二网际协议">二、网际协议</h2>
+<p>关键词:IP分片和重组、IP地址结构、IP地址分类、子网、子网掩码、网络地址/广播地址、CIDR超网、DHCP动态配置协议、NAT协议、ICMP控制报文协议</p>
+
+<p>DHCP：广播DHCP发现报文，广播DHCP提供报文，DHCP请求报文，DHCP ACK报文。工作在应用层，使用UDP协议</p>
+
+<p>NAT：所有离开本地网络的报文都拥有同一个源IP地址，内网主机对外网主机而言是不可见的、不可寻址的。
+<img src="/assets/png/2024-11-5.png" alt="图片" /></p>
+
+<p>ICMP：用于主机、路由器、网关之间交换网络层信息</p>
+
+<p>Ipv6:双栈技术，隧道技术</p>
+
+<h2 id="三路由算法">三、路由算法</h2>
+<p>IGP选路算法：链路状态协议、距离向量协议</p>
+
+<p>IGP协议（RIP,OSPF），BGP协议(热土豆路由选择)
+<img src="/assets/png/2024-11-6.png" alt="图片" /></p>
+
+<h1 id="第六章">第六章</h1>
+<p>链路层服务：最小单元–帧<br />
+成帧、链路接入、可靠交付</p>
+<h2 id="一多路访问链路协议">一、多路访问链路协议</h2>
+<p>信道划分协议、随机接入（访问）协议、轮流协议</p>
+
+<p>随机接入（访问）协议如何处理碰撞：ALOHA，时隙ALOHA、CSMA</p>
+
+<p>CSMA/CD：包含碰撞检测，碰撞后停止传输</p>
+
+<p>争用期（碰撞窗口）：以太网端到端往返时延，决定了CSMA/CD协议下最小帧长度</p>
+
+<p>轮流协议：轮询协议、令牌传递协议</p>
+
+<h2 id="二链路层寻址和arp协议">二、链路层寻址和ARP协议</h2>
+
+<p>mac地址：<img src="/assets/png/2024-11-7.png" alt="图片" />
+ARP工作流程：ARP请求，ARP应答，更新ARP高速缓存</p>
+
+<h2 id="三以太网">三、以太网</h2>
+<p>类型：总线式、交换式<br />
+服务：无连接、不可靠</p>
+
+<p>以太网的CSMA/CD：载波侦听，碰撞检测，随机访问<br />
+双向交替通信（半双工通信）</p>
+
+<p>关键词：争用期长度，最短有效帧长</p>
+
+<h2 id="四链路层交换机">四、链路层交换机</h2>
+<p>特点：全双工通信，帧过滤/转发
+<img src="/assets/png/2024-11-8.png" alt="图片" /></p>
+
+		</div>
+		<div id="valine-comments">
+
+
+		</div>
+		<script>
+			new Valine({
+			  el: '#valine-comments',
+			  appId: 'IRj09zYXUGh9ZfvZKMJEZPh1-gzGzoHsz',
+			  appKey: 'DDvBjJK453ByPX9gfe04YSQj',
+			  placeholder: '说点什么吧！',
+			  path: window.location.pathname, // 当前页面路径，用于区分不同文章
+			  avatar: 'wavatar',
+			  pageSize: 10,
+			  enableQQ: false
+			});
+		  </script>
+	</div>
+</div>
+
+</div>
+	<footer class="main-footer">
+		<p class="wc-container disclaimer">
+			<!--生成页尾-->
+&copy; 2024-<span id="cur_year"></span> <a href="https://github.com/cho159" target="blank">CH053N</a> - All Rights Reserved.
+Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="https://github.com/kuanghy/kuanghy.github.io" target="_blank">Github.com</a>
+<script type="text/javascript">
+    var cur_date = new Date();
+    document.getElementById("cur_year").innerHTML = cur_date.getFullYear();
+</script>
+		</p>
+
+	</footer>
+  	</body>
+</html>
