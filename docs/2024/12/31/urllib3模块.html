@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <title>urllib3模块</title>
+		<link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
+		<link rel="stylesheet" type="text/css" href="/assets/css/reset.css">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+  	</head>
+  	<body>
+		<header class="main-header">
+			<div class="wc-container">
+				<h1 class="site-title"><a href="/" class="title-link">CH053N的个人博客</a></h1>
+                		<h3 class="site-description"><i>C'est la vie.</i></h3>
+						<!-- 生成导航栏 -->
+<div class="header">
+    <ul>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/" class="headerItem">
+                主页
+            </a>
+            
+                <span>&raquo;</span>
+            
+        </li>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/archive/" class="headerItem">
+                归档
+            </a>
+            
+                <span>&raquo;</span>
+            
+        </li>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/categories/" class="headerItem">
+                分类
+            </a>
+            
+                <span>&raquo;</span>
+            
+        </li>
+    
+        <li class="navigation-list">
+            <a href="http://cho159.github.io/tags/" class="headerItem">
+                标签
+            </a>
+            
+        </li>
+    
+    </ul>
+</div>
+
+			</div>
+		</header>
+<div class="main-content">
+    <div class="page-content wc-container">
+
+	<div class="post">
+		<h1>urllib3模块</h1>
+		<p class="post-meta">
+			
+      <span class="categories">
+      网络安全
+      </span> |
+	    
+	  <span class="post-date">
+    	Dec 31, 2024
+	</span> 
+	   |
+	  
+	  <span class="categories">
+		  
+			  <a href="/tags/#网络">网络</a>
+		  
+	  </span>
+	  
+		</p>
+		<div class="post">
+			<p>urllib3是一个功能强大的用于HTTP客户端的python库，拥有很多标准库里没有的重要特性：<br />
+-线程安全<br />
+-连接池<br />
+-客户端SSL/TLS验证<br />
+-使用multipart编码上传文件<br />
+-Helpers用于重试请求并处理HTTP重定向<br />
+-支持gzip和deflate编码<br />
+-支持HTTP和SOCKS代理<br />
+-100%测试覆盖率</p>
+
+<h2 id="一网络请求">一、网络请求</h2>
+<p>使用urllib3模块发送网络请求时，先创建PoolManager对象，通过该对象调用request()方法实现网络请求的发送。一个PoolManager对象就是一个连接池管理对象，通过该对象可以向多个服务器发送请求。</p>
+
+<p>request()方法的语法格式：
+<code class="language-plaintext highlighter-rouge">request(method, url, fields=None, headers=None, ** urlopen_kw)</code>
+参数说明：<br />
+method:必选参数，用于指定请求方式
+url:必选参数，用于设置请求的url地址
+fields:可选参数，用于设置请求参数
+headers:可选参数，用于设置请求头</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import urllib3
+urllib3.disable_warnings()            # 关闭ssl警告
+baidu_url='https://www.baidu.com'
+python_url='https://www.python.org'
+jingdong_url='https://www.jd.com'
+http=urllib3.PoolManager()            # 创建连接池管理对象
+r1=http.request('GET',baidu_url) 
+r2=http.request('GET',python_url)
+r3=http.request('GET',jingdong_url)
+print('百度请求状态码', r1.status)
+print('python请求状态码', r2.status)
+print('京东请求状态码', r3.status)
+</code></pre></div></div>
+<p><img src="/assets/png/2024-12-1.png" alt="图片" /></p>
+
+<p>post请求则需要将fields参数设置为表单参数。</p>
+
+		</div>
+		<div id="valine-comments">
+
+
+		</div>
+		<script>
+			new Valine({
+			  el: '#valine-comments',
+			  appId: 'IRj09zYXUGh9ZfvZKMJEZPh1-gzGzoHsz',
+			  appKey: 'DDvBjJK453ByPX9gfe04YSQj',
+			  placeholder: '说点什么吧！',
+			  path: window.location.pathname, // 当前页面路径，用于区分不同文章
+			  avatar: 'wavatar',
+			  pageSize: 10,
+			  enableQQ: false
+			});
+		  </script>
+	</div>
+</div>
+
+</div>
+	<footer class="main-footer">
+		<p class="wc-container disclaimer">
+			<!--生成页尾-->
+&copy; 2024-<span id="cur_year"></span> <a href="https://github.com/cho159" target="blank">CH053N</a> - All Rights Reserved.
+Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> @ <a href="https://github.com/kuanghy/kuanghy.github.io" target="_blank">Github.com</a>
+<script type="text/javascript">
+    var cur_date = new Date();
+    document.getElementById("cur_year").innerHTML = cur_date.getFullYear();
+</script>
+		</p>
+
+	</footer>
+  	</body>
+</html>
