@@ -100,22 +100,44 @@ method:必选参数，用于指定请求方式
 url:必选参数，用于设置请求的url地址
 fields:可选参数，用于设置请求参数
 headers:可选参数，用于设置请求头</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import urllib3
-urllib3.disable_warnings()            # 关闭ssl警告
-baidu_url='https://www.baidu.com'
-python_url='https://www.python.org'
-jingdong_url='https://www.jd.com'
-http=urllib3.PoolManager()            # 创建连接池管理对象
-r1=http.request('GET',baidu_url) 
-r2=http.request('GET',python_url)
-r3=http.request('GET',jingdong_url)
-print('百度请求状态码', r1.status)
-print('python请求状态码', r2.status)
-print('京东请求状态码', r3.status)
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">urllib3</span>
+<span class="n">urllib3</span><span class="p">.</span><span class="nf">disable_warnings</span><span class="p">()</span>            <span class="c1"># 关闭ssl警告
+</span><span class="n">baidu_url</span><span class="o">=</span><span class="sh">'</span><span class="s">https://www.baidu.com</span><span class="sh">'</span>
+<span class="n">python_url</span><span class="o">=</span><span class="sh">'</span><span class="s">https://www.python.org</span><span class="sh">'</span>
+<span class="n">jingdong_url</span><span class="o">=</span><span class="sh">'</span><span class="s">https://www.jd.com</span><span class="sh">'</span>
+<span class="n">http</span><span class="o">=</span><span class="n">urllib3</span><span class="p">.</span><span class="nc">PoolManager</span><span class="p">()</span>            <span class="c1"># 创建连接池管理对象
+</span><span class="n">r1</span><span class="o">=</span><span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="sh">'</span><span class="s">GET</span><span class="sh">'</span><span class="p">,</span> <span class="n">baidu_url</span><span class="p">)</span> 
+<span class="n">r2</span><span class="o">=</span><span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="sh">'</span><span class="s">GET</span><span class="sh">'</span><span class="p">,</span> <span class="n">python_url</span><span class="p">)</span>
+<span class="n">r3</span><span class="o">=</span><span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="sh">'</span><span class="s">GET</span><span class="sh">'</span><span class="p">,</span> <span class="n">jingdong_url</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">百度请求状态码</span><span class="sh">'</span><span class="p">,</span> <span class="n">r1</span><span class="p">.</span><span class="n">status</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">python请求状态码</span><span class="sh">'</span><span class="p">,</span> <span class="n">r2</span><span class="p">.</span><span class="n">status</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">京东请求状态码</span><span class="sh">'</span><span class="p">,</span> <span class="n">r3</span><span class="p">.</span><span class="n">status</span><span class="p">)</span>
 </code></pre></div></div>
 <p><img src="/assets/png/2024-12-1.png" alt="图片" /></p>
 
-<p>post请求则需要将fields参数设置为表单参数。</p>
+<p>post请求则需要将fields参数设置为字典类型的表单参数。</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">urllib3</span>
+<span class="n">urllib3</span><span class="p">.</span><span class="nf">disable_warnings</span><span class="p">()</span>            <span class="c1"># 关闭ssl警告
+</span><span class="n">url</span><span class="o">=</span><span class="sh">'</span><span class="s">https://www.httpbin.org/post</span><span class="sh">'</span>
+<span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="sh">'</span><span class="s">name</span><span class="sh">'</span><span class="p">:</span><span class="sh">'</span><span class="s">Jack</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">chinese_name</span><span class="sh">'</span><span class="p">:</span><span class="sh">'</span><span class="s">杰克</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">age</span><span class="sh">'</span><span class="p">:</span><span class="sh">'</span><span class="s">30</span><span class="sh">'</span><span class="p">}</span>
+<span class="n">http</span><span class="o">=</span><span class="n">urllib3</span><span class="p">.</span><span class="nc">PoolManager</span><span class="p">()</span>            <span class="c1"># 创建连接池管理对象
+</span><span class="n">r</span><span class="o">=</span><span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="sh">'</span><span class="s">POST</span><span class="sh">'</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span><span class="n">fields</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">返回结果</span><span class="sh">'</span><span class="p">,</span> <span class="n">r</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="nf">decode</span><span class="p">(</span><span class="sh">'</span><span class="s">unicode_escape</span><span class="sh">'</span><span class="p">))</span>   <span class="c1">#中文字符编码以\u前缀表示，故采用unicode_escape解码方式
+</span></code></pre></div></div>
+<p><img src="/assets/png/2024-12-2.png" alt="图片" /></p>
+
+<p>urllib3模块会自动重试请求，该机制还可处理重定向，在默认情况下request()方法的请求重试次数为3次，可通过设置retries参数修改。</p>
+
+<p>发送网络请求后，返回一个HTTPResponse对象，通过该对象的info()方法可获取HTTP响应头信息，该信息为字典类型数据，需要通过遍历获取信息内容。</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">urllib3</span>
+<span class="n">urllib3</span><span class="p">.</span><span class="nf">disable_warnings</span><span class="p">()</span>            <span class="c1"># 关闭ssl警告
+</span><span class="n">url</span><span class="o">=</span><span class="sh">'</span><span class="s">https://www.httpbin.org/get</span><span class="sh">'</span>
+<span class="n">http</span><span class="o">=</span><span class="n">urllib3</span><span class="p">.</span><span class="nc">PoolManager</span><span class="p">()</span>            <span class="c1"># 创建连接池管理对象
+</span><span class="n">r</span><span class="o">=</span><span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="sh">'</span><span class="s">POST</span><span class="sh">'</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+<span class="n">response_header</span><span class="o">=</span><span class="n">r</span><span class="p">.</span><span class="nf">info</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">response_header</span><span class="p">.</span><span class="nf">keys</span><span class="p">():</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="sh">'</span><span class="s">:</span><span class="sh">'</span><span class="p">,</span> <span class="n">response_header</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+</code></pre></div></div>
 
 		</div>
 		<div id="valine-comments">
