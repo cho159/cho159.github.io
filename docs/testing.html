@@ -588,18 +588,18 @@ headers:可选参数，用于设置请求头</p>
 </code></pre></div></div>
 <p><img src="/assets/png/2024-12-1.png" alt="图片" /></p>
 
-<p>post请求则需要将fields参数设置为字典类型的表单参数。</p>
+<p>发送post请求则需要将fields参数设置为字典类型的表单参数。</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">urllib3</span>
 <span class="n">urllib3</span><span class="p">.</span><span class="nf">disable_warnings</span><span class="p">()</span>            <span class="c1"># 关闭ssl警告
 </span><span class="n">url</span><span class="o">=</span><span class="sh">'</span><span class="s">https://www.httpbin.org/post</span><span class="sh">'</span>
 <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="sh">'</span><span class="s">name</span><span class="sh">'</span><span class="p">:</span><span class="sh">'</span><span class="s">Jack</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">chinese_name</span><span class="sh">'</span><span class="p">:</span><span class="sh">'</span><span class="s">杰克</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">age</span><span class="sh">'</span><span class="p">:</span><span class="sh">'</span><span class="s">30</span><span class="sh">'</span><span class="p">}</span>
 <span class="n">http</span><span class="o">=</span><span class="n">urllib3</span><span class="p">.</span><span class="nc">PoolManager</span><span class="p">()</span>            <span class="c1"># 创建连接池管理对象
 </span><span class="n">r</span><span class="o">=</span><span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="sh">'</span><span class="s">POST</span><span class="sh">'</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span><span class="n">fields</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">返回结果</span><span class="sh">'</span><span class="p">,</span> <span class="n">r</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="nf">decode</span><span class="p">(</span><span class="sh">'</span><span class="s">unicode_escape</span><span class="sh">'</span><span class="p">))</span>   <span class="c1">#中文字符编码以\u前缀表示，故采用unicode_escape解码方式
+<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">返回结果</span><span class="sh">'</span><span class="p">,</span> <span class="n">r</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="nf">decode</span><span class="p">(</span><span class="sh">'</span><span class="s">unicode_escape</span><span class="sh">'</span><span class="p">))</span>   <span class="c1"># 中文字符编码以\u前缀表示，故采用unicode_escape解码方式
 </span></code></pre></div></div>
 <p><img src="/assets/png/2024-12-2.png" alt="图片" /></p>
 
-<p>urllib3模块会自动重试请求，该机制还可处理重定向，在默认情况下request()方法的请求重试次数为3次，可通过设置retries参数修改。</p>
+<p>urllib3模块有自动重试请求的机制，该机制还可处理重定向，在默认情况下request()方法的请求重试次数为3次，可通过设置retries参数修改。</p>
 
 <p>发送网络请求后，返回一个HTTPResponse对象，通过该对象的info()方法可获取HTTP响应头信息，该信息为字典类型数据，需要通过遍历获取信息内容。</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">urllib3</span>
@@ -611,6 +611,22 @@ headers:可选参数，用于设置请求头</p>
 <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">response_header</span><span class="p">.</span><span class="nf">keys</span><span class="p">():</span>
     <span class="nf">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="sh">'</span><span class="s">:</span><span class="sh">'</span><span class="p">,</span> <span class="n">response_header</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
 </code></pre></div></div>
+<p><img src="/assets/png/2024-12-3.png" alt="图片" /></p>
+
+<p>当服务器返回的信息是json格式数据时，可通过python的json.loads()将其转为python可用的字典类型数据，并进一步获取所需的值。</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">urllib3</span>
+<span class="kn">import</span> <span class="n">json</span>
+<span class="n">urllib3</span><span class="p">.</span><span class="nf">disable_warnings</span><span class="p">()</span>            <span class="c1"># 关闭ssl警告
+</span><span class="n">url</span><span class="o">=</span><span class="sh">'</span><span class="s">https://www.httpbin.org/post</span><span class="sh">'</span>
+<span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="sh">'</span><span class="s">name</span><span class="sh">'</span><span class="p">:</span><span class="sh">'</span><span class="s">Jack</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">chinese_name</span><span class="sh">'</span><span class="p">:</span><span class="sh">'</span><span class="s">杰克</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">age</span><span class="sh">'</span><span class="p">:</span><span class="sh">'</span><span class="s">30</span><span class="sh">'</span><span class="p">}</span>
+<span class="n">http</span><span class="o">=</span><span class="n">urllib3</span><span class="p">.</span><span class="nc">PoolManager</span><span class="p">()</span>            <span class="c1"># 创建连接池管理对象
+</span><span class="n">r</span><span class="o">=</span><span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="sh">'</span><span class="s">POST</span><span class="sh">'</span><span class="p">,</span><span class="n">url</span><span class="p">,</span><span class="n">fields</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+<span class="n">j</span><span class="o">=</span><span class="n">json</span><span class="p">.</span><span class="nf">loads</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="nf">decode</span><span class="p">(</span><span class="sh">'</span><span class="s">unicode_escape</span><span class="sh">'</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">数据类型</span><span class="sh">'</span><span class="p">,</span> <span class="nf">type</span><span class="p">(</span><span class="n">j</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">获取form对应的数据</span><span class="sh">'</span><span class="p">,</span> <span class="n">j</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">form</span><span class="sh">'</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">获取country对应的数据</span><span class="sh">'</span><span class="p">,</span> <span class="n">j</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">form</span><span class="sh">'</span><span class="p">).</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">country</span><span class="sh">'</span><span class="p">))</span>
+</code></pre></div></div>
+<p><img src="/assets/png/2024-12-4.png" alt="图片" /></p>
 
 		</div>
 		<div id="valine-comments">
